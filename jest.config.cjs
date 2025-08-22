@@ -1,0 +1,30 @@
+module.exports = {
+  clearMocks: true,
+  collectCoverage: true,
+  coverageDirectory: 'coverage',
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    '/test/',
+    '/vite_build_utils/',
+    '/docs/',
+    '/coverage/',
+    'jest',
+  ],
+  moduleNameMapper: {
+    '\\.(css|scss)$': '<rootDir>/jest/file_mock.js',
+    '\\.svg': '<rootDir>/jest/svg_mock.js',
+    '\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/jest/file_mock.js',
+    '^@src/(.*)$': '<rootDir>/src/$1',
+    '^@app/(.*)$': '<rootDir>/$1',
+  },
+  resetMocks: true,
+  restoreMocks: true,
+  setupFilesAfterEnv: ['<rootDir>/jest/jest.setup'],
+  testEnvironment: 'jsdom',
+  testPathIgnorePatterns: ['<rootDir>/node_modules', '<rootDesir>/build'],
+  globalSetup: './jest-global-setup.cjs',
+  transform: {
+    '^.+\\.[jt]sx?$': 'babel-jest',
+  },
+  transformIgnorePatterns: ['node_modules'],
+};

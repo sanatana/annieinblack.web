@@ -1,0 +1,41 @@
+# Hey, I don't think you are a robot. Why don't you check our main page :)
+
+User-Agent: T-1000
+Disallow: /
+
+User-Agent: T-800
+Disallow: /
+
+User-Agent: HAL 9000
+Disallow: /
+
+User-Agent: Ultron
+Disallow: /
+
+User-Agent: Cylons
+Disallow: /
+
+User-Agent: Megatron
+Disallow: /
+
+User-Agent: wget
+Disallow: /
+
+##################################################
+#                      ______                    #
+#                    <((((((\\\                  #
+#                    /      . }\                 #
+#                    ;--..--._|}                 #
+# (\                 '--/\--'  )                 #
+#  \\                | '-'  :'|                  #
+#   \\               . -==- .-|                  #
+#    \\               \.__.'   \--._             #
+#    [\\          __.--|       //  _/'--.        #
+#    \ \\       .'-._ ('-----'/ __/      \       #
+#     \ \\     /   __>|      | '--.       |      #
+#      \ \\   |   \   |     /    /       /       #
+#       \ '\ /     \  |     |  _/       /        #
+#        \  \       \ |     | /        /         #
+#         \  \      \        /                   #
+#                                                #
+##################################################

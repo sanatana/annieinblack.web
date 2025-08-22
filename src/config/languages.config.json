@@ -1,0 +1,25 @@
+{
+  "SUPPORTED_LANGUAGES": [
+    {
+      "locale": "en-GB",
+      "name": "English (GB)",
+      "default": true,
+      "date": "enGB"
+    },
+    {
+      "locale": "en-US",
+      "name": "English (US)",
+      "date": "enUS"
+    },
+    {
+      "locale": "de-DE",
+      "name": "Deutsch (DE)",
+      "date": "de"
+    },
+    {
+      "locale": "de-CH",
+      "name": "Deutsch (CH)",
+      "date": "de"
+    }
+  ]
+}

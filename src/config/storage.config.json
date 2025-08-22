@@ -1,0 +1,24 @@
+{
+  "NAMES": {
+    "USER": "app.user",
+    "IS_AUTHENTICATED": "app.is_authenticated",
+    "ACCESS_TOKEN": "app.access_token",
+    "REFRESH_TOKEN": "app.refresh_token",
+    "ACCESS_VALID_TILL": "app.access_valid_till",
+    "LAYOUT_SETTINGS": "app.layout",
+    "SELECTED_LANGUAGE": "app.language",
+    "REDIRECT_URL": "app.login_url",
+    "LIKES": "app.likes",
+    "REPLY_REDIRECT_URL": "app.reply.redirect",
+    "API_AUTHORISATION_ERROR": "app.api.error.auth",
+    "LOGIN_TOKEN": "app.api.error.login-token",
+    "INVITATION_CODES": "app.invitations",
+    "STRIPE_PORTAL_SESSION": "app.customer.portal",
+    "CONTACT_SENT": "app.support.c.c",
+    "CONTACT_COMPANY_SENT": "app.support.c.i",
+    "UMAMI_VISITOR_ID": "app.support.v.i"
+  },
+  "PERSISTENT": [
+    "SELECTED_LANGUAGE", "CONTACT_COMPANY_SENT", "CONTACT_SENT", "UMAMI_VISITOR_ID"
+  ]
+}

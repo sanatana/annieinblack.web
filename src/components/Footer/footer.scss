@@ -1,0 +1,77 @@
+@use "../../assets/scss/variables" as variables;
+@use "../../assets/scss/mixins/container" as container;
+@use "../../assets/scss/responsive" as responsive;
+
+.footer {
+  color: #efefef;
+
+  &__coffee {
+    padding: 18px;
+    margin-top: 20px;
+    background-color: variables.$brand-color;
+    border-radius: 30px;
+    line-height: 1;
+    color: #fff;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+
+    img {
+      width: 20px;
+    }
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  &__content {
+    & {
+      line-height: 1.5;
+      font-size: 1.5rem;
+
+      @include container.container();
+    }
+
+    &-socials {
+      min-width: 350px;
+    }
+
+    &-flex {
+      display: flex;
+      gap: 3rem;
+
+      & {
+        @include responsive.max-width(800) {
+          flex-direction: column;
+          gap: 3rem;
+        }
+      }
+
+      h3 {
+        display: inline-block;
+        margin-bottom: 12px;
+        padding-bottom: 4px;
+        border-bottom: 1px solid variables.$brand-color;
+        font-size: 1.8rem;
+      }
+    }
+  }
+
+  &__copy {
+    & {
+      font-size: 1.4rem;
+      @include container.container();
+    }
+
+    & {
+      border-top: 1px solid rgba(255 255 255 / 30%);
+      margin-top: 2rem;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      background-color: #181818;
+    }
+  }
+}

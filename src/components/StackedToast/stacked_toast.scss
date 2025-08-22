@@ -1,0 +1,158 @@
+@use "../../assets/scss/mixins/container" as container;
+@use "../../assets/scss/variables" as vars;
+
+/* stylelint-disable no-descending-specificity */
+.stacked-toaster {
+  & {
+    @include container.container;
+  }
+
+  & {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    right: 0;
+    height: 1px;
+    overflow: visible;
+    padding-top: 8px;
+    padding-bottom: 0;
+    padding-right: 10px;
+  }
+
+  &__message {
+    border: 1px solid #CCC;
+    width: 375px;
+    border-radius: 10px;
+    box-shadow: 0 5px 8px rgba(0 0 0 / 15%);
+    background-color: #fff;
+    font-size: 1.5rem;
+    opacity: 1;
+    position: relative;
+    max-height: 1px;
+    animation: stacked-toast-animation 500ms linear forwards;
+    line-height: 1.5;
+    overflow: hidden;
+    margin-top: 0;
+    margin-bottom: 8px;
+    cursor: pointer;
+    max-width: 75vw;
+
+    &--start-hide {
+      overflow: hidden;
+      opacity: 0;
+      animation: stacked-toast-animation-out 700ms linear forwards;
+    }
+
+    &--close {
+      position: absolute;
+      float: right;
+      right: 5px;
+      top: 5px;
+      cursor: pointer;
+
+      &::after {
+        font-family: vars.$material-symbols;
+        content: '\e5cd';
+        display: inline-block;
+        font-size: 1.5rem;
+      }
+
+      span {
+        visibility: hidden;
+      }
+    }
+
+    &--added {
+      max-height: 500px;
+    }
+
+    &--success,
+    &--error {
+      .stacked-toaster__message--text {
+        &::before {
+          display: inline-block;
+          position: absolute;
+          font-family: vars.$material-symbols;
+          left: 10px;
+          margin-top: -1.5rem;
+          top: 50%;
+          width: 3rem;
+          height: 3rem;
+          line-height: 3rem;
+          font-size: 3rem;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    &--success {
+      border-left: 4px solid vars.$toaster-success;
+
+      .stacked-toaster__message--text {
+        &::before {
+          content: '\e86c';
+          color: vars.$toaster-success
+        }
+      }
+    }
+
+    &--error {
+      border-left: 4px solid vars.$toaster-error;
+
+      .stacked-toaster__message--text {
+        &::before {
+          content: '\e99a';
+          color: vars.$toaster-error
+        }
+      }
+    }
+
+    &--text {
+      padding: 10px;
+      padding-top: 1.2rem;
+      position: relative;
+      padding-left: 5rem;
+    }
+  }
+}
+
+@keyframes stacked-toast-animation {
+  0% {
+    max-height: 1px;
+    margin-top: -10px;
+  }
+
+  10% {
+    margin-top: 0;
+  }
+
+  100% {
+    max-height: 500px;
+  }
+}
+
+@keyframes stacked-toast-animation-out {
+  0% {
+    max-height: 500px;
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  90% {
+    max-height: 1px;
+    opacity: 0;
+  }
+
+  99% {
+    opacity: 0;
+    display: block;
+  }
+
+  100% {
+    display: none;
+  }
+}
+/* stylelint-enable no-descending-specificity */

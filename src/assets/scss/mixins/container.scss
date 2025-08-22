@@ -1,0 +1,10 @@
+@use '../variables' as vars;
+
+@mixin container {
+  padding: 0 vars.$layout-padding-right 0 vars.$layout-padding-left;
+
+  @media only screen and (min-width: vars.$max-content-width + 60) {
+    padding-left: calc((100vw - #{vars.$max-content-width}) / 2);
+    padding-right: calc((100vw - #{vars.$max-content-width}) / 2);
+  }
+}

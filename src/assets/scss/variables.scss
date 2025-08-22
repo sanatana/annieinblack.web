@@ -1,0 +1,100 @@
+$text-font: 'Poppins', sans-serif;
+$header-font: 'Times New Roman', Times, serif;
+$text-font-size: 1.5rem;
+
+$background-color: #000;
+
+$brand-color: #f0487a;
+$brand-color-hover: #ea376c;
+
+$add-review-button-bg-color: $brand-color;
+$add-review-button-bg-color-hover: #175894;
+
+$primary-button-bg-color: $brand-color;
+// $primary-button-bg-color-hover: #ef3a70;
+$primary-button-bg-color-hover: #175894;
+
+$link-color: #175894;
+$link-color-hover: #0a64bd;
+
+$link-danger-color: #ff6d34;
+$link-danger-color-hover: #fb6021;
+
+$layout-padding-top: 20px;
+$layout-padding-right: 30px;
+$layout-padding-bottom: 20px;
+$layout-padding-left: 30px;
+
+$max-content-width: 1400px;
+$section-top-bottom-padding: 80px;
+$text-color: #181818;
+$light-text-color: #606060;
+
+// e16e6e
+$input-border-radius: 6px;
+$error-text-color: #f0487a;
+
+$field-padding: 1rem;
+$placeholder-text-color: #7c7c7c;
+$disabled-field-background-color: #c0c0c0;
+$buttons-border-radius: 26px;
+$card-border-radius: 26px;
+
+$field-border: 1px solid #ccc;
+$material-symbols: "Material Symbols Outlined";
+$box-shadow: 5px 5px 5px 8px rgba(0 0 0 / 10%);
+
+$toaster-success: #4b833c;
+$toaster-error: #ff6657;
+
+$line-colour: #e4e4e4;
+$card-border-color: #e3e3e3;
+
+$input-border-color: #ccc;
+$input-border-color-autofill: #ccc;
+$input-border-color-hover: #1e1e1e;
+$input-border-color-focus: #000;
+
+// modals
+$modal-close-button-bg-color: $brand-color;
+$modal-close-button-bg-color-hover: $primary-button-bg-color-hover;
+$modal-close-button-icon-color: #fff;
+$modal-close-button-border-color: #fff;
+$modal-close-button-box-shadow: 1px 1px 10px rgba(0 0 0 / 25%);
+$modal-overlay-bg-color: rgba(0 0 0 / 75%);
+$modal-border-thickness: 8px;
+$modal-border-thickness-mini: 8px;
+$z-index-info-modal-overlay: 100;
+$z-index-info-modal-close-button: 101;
+$z-index-info-modal-wrapper: 102;
+$z-index-info-modal-content: 103;
+$modals-border-radius: 26px;
+$modal-border-color: #ccc;
+$modal-title-bg-color: #fff;
+
+$side-menu-icons-colour: #858585;
+$ok-color: green;
+$h1-header-size: 3rem;
+
+
+$default-star-color: #e5e7eb;
+$default-star-color: #c8c8c8;
+$stars-1-color: #f0487a;
+$stars-2-color: #f27c38;
+$stars-3-color: #fdc42d;
+$stars-4-color: #a6dc55;
+$stars-5-color: #3dae69;
+
+$account-pages-min-header-height: 250px;
+$content-sections-padding-px: 4rem;
+
+$content-sections-padding-top-px: 3rem;
+$content-sections-padding-bottom-px: 3rem;
+
+
+// header settings (with search)
+$header-with-search-flex-gap: 7rem;
+$header-with-search-height: 900px;
+$small-header-background-color: #fff;
+
+$card-hover-shadow: 0 0 15px rgba(0 0 0 / 10%);

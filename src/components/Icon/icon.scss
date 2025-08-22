@@ -1,0 +1,19 @@
+@use "../../assets/scss/variables" as vars;
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.material-symbols-filled {
+  font-family: 'Material Symbols Outlined';
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.material-icon {
+  line-height: 1;
+}

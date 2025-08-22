@@ -1,0 +1,16 @@
+services:
+  web-app-reviews:
+    image: web-app-reviews
+    container_name: web-app-reviews
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    ports:
+      - "8083:80"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "http://localhost/status/health/status.json"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+      start_period: 5s  # Optional: wait 5s before first check

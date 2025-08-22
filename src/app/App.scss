@@ -1,0 +1,81 @@
+@use '../assets/scss/mixins/container' as container;
+@use '../assets/scss/variables' as variables;
+
+body {
+  background-color: variables.$background-color;
+}
+
+.page {
+  &-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+  }
+
+  &-content {
+    padding-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+    background-color: #f6f6f6;
+
+    &-container {
+      @include container.container();
+    }
+  }
+}
+
+button.button--link {
+  border: 0;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+
+a, button.button--link {
+  color: variables.$link-color;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+  }
+}
+
+.button__default {
+  border: 0;
+  border-radius: 20px;
+  margin: 0;
+  padding: 1rem 2rem;
+  display: inline-flex;
+  gap: 1rem;
+  align-items: center;
+  background-color: #efefef;
+
+  .material-icon {
+    font-size: 1.8rem;
+  }
+}
+
+.unselectable {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+.word-break {
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+
+b, strong {
+  font-weight: 500
+}
