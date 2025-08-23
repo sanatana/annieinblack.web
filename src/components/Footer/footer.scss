@@ -4,6 +4,36 @@
 
 .footer {
   color: #efefef;
+  overflow-x: hidden;
+
+  &:before {
+    content: "";
+    display: block;
+    z-index: -1;
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    background-image: url("/assets/images/splatter__001.png");
+    background-size: contain;
+    top: -160px;
+    left: -200px;
+    opacity: 0.1;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    z-index: 4;
+    width: 700px;
+    height: 700px;
+    position: fixed;
+    background-image: url("/assets/images/splatter__001.png");
+    background-size: contain;
+    bottom: -160px;
+    right: -500px;
+    opacity: 0.1;
+    pointer-events: none;
+  }
 
   &__coffee {
     padding: 18px;
@@ -33,6 +63,21 @@
       font-size: 1.5rem;
 
       @include container.container();
+    }
+
+    &:after {
+      content: "";
+      display: block;
+      z-index: 4;
+      width: 700px;
+      height: 700px;
+      position: fixed;
+      background-image: url("/assets/images/splatter__001.png");
+      background-size: contain;
+      bottom: -160px;
+      left: -300px;
+      opacity: 0.04;
+      pointer-events: none;
     }
 
     &-socials {

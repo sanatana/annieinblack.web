@@ -31,15 +31,17 @@ const setPlayerVolume = (v) => (dispatch) => {
 
 const hydratePlayerVolume = () => (dispatch) => {
 
-  let volume = parseFloat(sessionStorage.getItem('annie-in-black__volume')) ?? 0.4;
+  let volume = parseFloat(sessionStorage.getItem('annie-in-black__volume')) ?? 0.5;
   volume = parseFloat(volume.toFixed(2));
 
-  console.log('HYDRATE', volume.toString());
+  if (Number.isNaN(volume)) {
+    volume = 0.5;
+  }
 
   dispatch({
     type: types.SET_PLAYER_VOLUME,
     payload: {
-      volume: volume,
+      volume: volume ?? 0.5,
     }
   });
 };

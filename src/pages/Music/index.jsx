@@ -20,7 +20,7 @@ const HomeHeader = () => {
       <Video/>
 
       <div className="music__hero-content">
-        <h1>Our music</h1>
+        <h1>Our Music</h1>
         <h2>Echoes of loss, memory, and shadows</h2>
       </div>
     </section>
