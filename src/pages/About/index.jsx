@@ -39,7 +39,7 @@ const HomePageContent = () => {
         <img src={ AnnieInBlack } alt="Annie In Black" />
 
         <p>Annie in Black began as a handful of childhood friends who first picked up instruments together. Back then it
-          was noisy rehearsals in borrowed garages, learning how to turn feelings into sound, and dreaming bigger than
+          was noisy rehearsals in garages and attics, learning how to turn feelings into sound, and dreaming bigger than
           the small towns we grew up in. Life, as it often does, pulled us apart - careers, families, responsibilities -
           until the music became a memory of youth.</p>
 

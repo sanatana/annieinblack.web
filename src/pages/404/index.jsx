@@ -264,8 +264,8 @@ const PageNotFound = () => {
 
         <div>
           <h1>404</h1>
-          <h2>{ t('common:404_YOURLOST') }</h2>
-          <p>{ t('common:PAGE_NOT_FOUND_INFO') }
+          <h2>UH OH! You&apos;re lost.</h2>
+          <p>The page you are looking for does not exist. How you got here is a mystery.
           </p>
         </div>
       </div>
