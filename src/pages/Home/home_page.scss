@@ -39,7 +39,7 @@
       width: 100%;
     }
 
-    &-video {
+    video {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -111,6 +111,32 @@
   z-index: 2;
   position: relative;
 
+  &__intro {
+    max-width: 900px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 0;
+    padding-bottom: 0 !important;
+
+    &:after {
+      height: 1rem;
+      content: "";
+      clear: both;
+      display: block;
+    }
+
+    a {
+      display: inline-block;
+      text-align: right;
+      background-color: variables.$brand-color;
+      color: #fff;
+      border-radius: 24px;
+      float: right;
+      padding: 1rem;
+      font-size: 1.4rem;
+    }
+  }
+
   &__play-list {
     flex: 1;
     width: 100%;
@@ -118,7 +144,6 @@
 
   article {
     padding-top: 3rem;
-    padding-bottom: 3rem;
     display: flex;
     justify-content: center;
     max-width: 900px;
@@ -131,39 +156,28 @@
     & {
       @include responsive.max-width(700) {
         flex-direction: column;
+        gap: 3rem;
       }
     }
 
-    img {
+    .cover {
       border-radius: 25px;
       overflow: hidden;
-      transform: scale(1);
-      transition: transform 0.25s ease-in-out;
       border: 4px solid #ccc;
       min-width: 100px;
       max-width: 290px;
       flex: none;
       width: auto;
       position: sticky;
-      top: 0;
+      top: 80px;
+      text-align: right;
 
       & {
         @include responsive.max-width(700) {
+          top: 0;
           position: relative;
           margin-left: auto;
           margin-right: auto;
-        }
-      }
-
-      &:hover {
-        transform: scale(1.2);
-        border: 4px solid #fff;
-        box-shadow: 0 0 40px 0 rgba(255 255 255 / 50%);
-        position: relative;
-        z-index: 10;
-
-        @include responsive.max-width(700) {
-          transform: scale(1);
         }
       }
     }
@@ -175,5 +189,36 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
+
+    a {
+      display: inline-flex;
+      border: 1px solid rgba(255 255 255 / 70%);
+      padding: 18px;
+      border-radius: 25px;
+      color: #fff;
+      background-color: #000;
+
+      &:hover {
+        text-decoration: none;
+        background-color: variables.$brand-color;
+        box-shadow: 0 0 35px rgba(255 255 255 / 50%);
+      }
+    }
+
+    &-wrapper {
+      position: relative;
+      padding-top: 4rem;
+      margin-top: 2rem;
+
+      &:before {
+        content: '';
+        height: 1px;
+        display: inline-block;
+        width: 75%;
+        background-color: rgba(255 255 255 / 50%);
+        position: absolute;
+        transform: translate(-50%, -3rem);
+      }
+    }
   }
 }

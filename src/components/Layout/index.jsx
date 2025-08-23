@@ -1,10 +1,10 @@
 import { useCallback, useEffect } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Footer } from '@src/components';
+import { Footer, HeadMenu } from '@src/components';
 
 const Index = ({ children }) => {
-  const navigate = useNavigate();
+  const { pathname, state } = useLocation();
 
   const goToTop = useCallback(() => {
     window.scrollTo({
@@ -15,14 +15,17 @@ const Index = ({ children }) => {
   }, []);
 
   useEffect(() => {
+    if (state?.noScroll) { return; }
     goToTop();
-  }, [goToTop, navigate]);
+  }, [goToTop, pathname,state]);
 
   return (
     <>
       <div
         className="page-container"
       >
+        <HeadMenu />
+
         <div>
           { children }
           <Outlet />

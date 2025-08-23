@@ -1,0 +1,108 @@
+@use "../../assets/scss/responsive" as responsive;
+@use "../../assets/scss/variables" as variables;
+@use "../../assets/scss/mixins/container" as container;
+
+.head-menu {
+  position: fixed;
+  top: 0;
+  padding: 20px 20px 16px 20px;
+  background-color: transparent;
+  transition: background-color 0.5s ease;
+  color: #fff;
+  z-index: 5;
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  left: 0;
+  right: 0;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    min-height: 30px;
+
+    & {
+      @include container.container();
+    }
+
+    & {
+      @include responsive.max-width(700) {
+        justify-content: center;
+      }
+    }
+  }
+
+  img {
+    height: 30px;
+    flex: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    position: absolute;
+    left: -8000px;
+
+    @include responsive.max-width(700) {
+      position: unset;
+      left: 0;
+      opacity: 1;
+    }
+  }
+
+  &--sticky {
+    background-color: rgba(0 0 0 / 80%);
+
+    img {
+      opacity: 1;
+      position: unset;
+      left: 0;
+    }
+  }
+
+  &__links {
+    display: flex;
+    gap: 1rem;
+
+    a {
+      text-decoration: none;
+      color: #fff;
+      position: relative;
+      display: inline-block;
+      font-size: 1.3rem;
+      font-weight: 400;
+
+      &:after {
+        content: '';
+        bottom: -8px;
+        background-color: variables.$brand-color;
+        height: 2px;
+        display: block;
+        position: absolute;
+        width: 100%;
+        left: -100%;
+        opacity: 0;
+        transition: opacity 0.5s ease, left 0.5s ease;
+      }
+
+      &:hover {
+        text-decoration: none;
+
+        &:after {
+          left: 0;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  & {
+    @include responsive.max-width(700) {
+      flex-direction: column;
+
+      .head-menu__links {
+        position: fixed;
+        left: -1000vw;
+      }
+    }
+  }
+}

@@ -2,8 +2,17 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
 
+import iconPlay from '@src/assets/images/play_arrow.svg';
+import iconPause from '@src/assets/images/pause.svg';
+import iconPrev  from '@src/assets/images/keyboard_double_arrow_left.svg';
+import iconNext  from '@src/assets/images/keyboard_double_arrow_right.svg';
+
+import iconMute  from '@src/assets/images/volume_off.svg';
+import iconVolume  from '@src/assets/images/volume_up.svg';
+
 import './audio_player.scss';
-import { Icon } from '@src/components';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPlayerVolume } from '@src/redux/slices/song/actions';
 
 function formatTime(s) {
   if (!Number.isFinite(s) || s < 0) { return '0:00'; }
@@ -13,18 +22,18 @@ function formatTime(s) {
 }
 
 const AudioPlayer = ({ tracks = [] }) => {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(-1);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  const [volume, setVolume] = useState(0.4);
   const [duration, setDuration] = useState(0);
   const [current, setCurrent] = useState(0);
   const audioRef = useRef(null);
   const rafRef = useRef(0);
   const progressRef = useRef(null);
   const containerRef = useRef(null);
-
+  const { volume } = useSelector((state) => state.song);
   const currentTrack = useMemo(() => tracks[index] || null, [tracks, index]);
+  const dispatch = useDispatch();
 
   const load = useCallback(() => {
     const a = audioRef.current;
@@ -89,14 +98,13 @@ const AudioPlayer = ({ tracks = [] }) => {
 
   useEffect(() => {
     const a = audioRef.current;
-    if (!a) { return; }
-    a.muted = isMuted;
+    if (a) { a.muted = isMuted; }
+
   }, [isMuted]);
 
   useEffect(() => {
     const a = audioRef.current;
-    if (!a) { return; }
-    a.volume = volume;
+    if (a) { a.volume = volume; }
   }, [volume]);
 
   const onSeek = useCallback(e => {
@@ -124,7 +132,12 @@ const AudioPlayer = ({ tracks = [] }) => {
 
   useEffect(() => {
     const a = audioRef.current;
-    if (!a) { return; }
+    if (!a) { return undefined; }
+
+    if (index === -1) {
+      return undefined;
+    }
+
     a.src = tracks[index].src;   // set the new source now (don’t wait for effects)
     a.load();
 
@@ -185,13 +198,24 @@ const AudioPlayer = ({ tracks = [] }) => {
         <div className="album-player__bar">
           <div className="album-player__controls">
             <button className="album-player__btn" onClick={ prev } aria-label="Previous">
-              <Icon>keyboard_double_arrow_left</Icon>
+              <img src={ iconPrev } alt="Previous song" />
             </button>
-            <button className="album-player__btn plp-primary" onClick={ togglePlay } aria-label={ isPlaying ? 'Pause' : 'Play' }>
-              { isPlaying ? (<Icon>pause</Icon>) : (<Icon>play_arrow</Icon>) }
+            <button className="album-player__btn plp-primary" onClick={ () => {
+              if (index === -1) {
+                setIndex(0);
+                return;
+              }
+              togglePlay();
+            }
+            } aria-label={ isPlaying ? 'Pause' : 'Play' }>
+              { isPlaying ? (
+                <img src={ iconPause } alt="Pause" />
+              ) : (
+                <img src={ iconPlay } alt="Play"/>
+              ) }
             </button>
             <button className="album-player__btn" onClick={ next } aria-label="Next">
-              <Icon>keyboard_double_arrow_right</Icon>
+              <img src={ iconNext } alt="Previous song"/>
             </button>
           </div>
 
@@ -212,7 +236,7 @@ const AudioPlayer = ({ tracks = [] }) => {
 
           <div className="album-player__volume">
             <button className="album-player__btn" onClick={ () => setIsMuted(m => !m) } aria-label={ isMuted ? 'Unmute' : 'Mute' }>
-              { isMuted ? <Icon>volume_off</Icon> : <Icon>volume_up</Icon> }
+              { isMuted ? (<img src={ iconMute } alt="Mutted"/>) : <img src={ iconVolume } alt="Mute"/> }
             </button>
             <input
               type="range"
@@ -222,7 +246,7 @@ const AudioPlayer = ({ tracks = [] }) => {
               value={ isMuted ? 0 : volume }
               onChange={ e => {
                 const v = Number(e.target.value);
-                setVolume(v);
+                dispatch(setPlayerVolume(v));
                 if (isMuted && v > 0) { setIsMuted(false); }
               } }
               aria-label="Volume"

@@ -21,7 +21,7 @@ $indicator-height: 3px;
   }
 }
 
-.body--modal-open {
+body.no-scroll {
   .scroll-tracker {
     display: none;
   }

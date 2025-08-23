@@ -5,3 +5,6 @@ export { default as Layout } from './Layout';
 export { default as StackedToast } from './StackedToast';
 export { default as Footer } from './Footer';
 export { default as Icon } from './Icon';
+export { default as HeadMenu } from './HeadMenu';
+export { default as InternalLink } from './InternalLink';
+export { default as Video } from './Video';

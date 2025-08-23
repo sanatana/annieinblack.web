@@ -1,8 +1,50 @@
 @use '../assets/scss/mixins/container' as container;
 @use '../assets/scss/variables' as variables;
 
+@font-face {
+  font-family: 'annieInBlack';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url(/fonts/ComforterBrush-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'poppins';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url(/fonts/Poppins-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'poppins';
+  font-weight: normal;
+  font-display: swap;
+  font-style: italic;
+  src: url(/fonts/Poppins-Italic.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'poppins';
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: url(/fonts/Poppins-Bold.ttf) format('truetype');
+}
+
 body {
   background-color: variables.$background-color;
+
+  h1 {
+    font-family: 'annieInBlack';
+    font-weight: normal;
+    font-size: 6rem;
+  }
+
+  &.no-scroll {
+    overflow: hidden;
+  }
 }
 
 .page {
@@ -18,7 +60,6 @@ body {
     padding-bottom: 3rem;
     position: relative;
     z-index: 1;
-    background-color: #f6f6f6;
 
     &-container {
       @include container.container();

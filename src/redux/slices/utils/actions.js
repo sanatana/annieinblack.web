@@ -43,7 +43,6 @@ const clearNotAuthorisedError = () => (dispatch) => {
   dispatch(hideModal());
 };
 
-
 export {
   showStackedToast,
   showNotification,

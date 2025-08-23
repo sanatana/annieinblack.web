@@ -1,5 +1,9 @@
 import './footer.scss';
 
+import fb from '@src/assets/logos/fb.svg';
+import yt from '@src/assets/logos/youtube.svg';
+import { InternalLink } from '@src/components';
+
 const Coffee = () => {
   return (
     <a
@@ -19,20 +23,26 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer__content">
         <div className="footer__content-flex">
-          <div>
+          <div className="footer__content-about">
             <h3>Annie in Black</h3>
             <p>
               Annie in Black is an experimental rock band blending emotional depth with melodic intensity.
               With heartfelt lyrics, atmospheric guitars, and powerful vocals, their music explores loss, sorrow,
               and inner conflict in songs that are haunting and raw.
+              <br />
+              <InternalLink to="/about-us">More about us</InternalLink>
             </p>
           </div>
 
           <div className="footer__content-socials">
             <h3>Connect with us</h3>
             <div className="footer__content-socials-links">
-              <a href="https://www.facebook.com/annieinblack" target="_blank" rel="nofollow noopener noreferrer">f</a>
-              <a href="https://music.youtube.com/???" target="_blank" rel="nofollow noopener noreferrer">Y</a>
+              <a href="https://www.facebook.com/annieinblack" target="_blank" rel="nofollow noopener nimoreferrer noreferrer">
+                <img src={ fb } alt="Annie in Black on Facebook" />
+              </a>
+              <a href="https://music.youtube.com/watch?v=AnpA--zGgT4&list=OLAK5uy_mQSyoPMgglQXTsafZ951L1ufkxpxJkq08" target="_blank" rel="nofollow noopener noreferrer">
+                <img src={ yt } alt="Annie in Black on Youtube" />
+              </a>
             </div>
 
             <div>

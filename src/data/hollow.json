@@ -1,0 +1,137 @@
+[
+  {
+    "slug": "i-remember",
+    "title": "I Remember (Preview)",
+    "artist": "Annie in Black",
+    "cover": "/assets/audio/album/hollow/cover.jpg",
+    "src": "/assets/audio/album/hollow/001.mp3",
+    "duration": 66,
+    "song_duration": 231
+  },
+  {
+    "slug": "hollow",
+    "title": "Hollow (Preview)",
+    "artist": "Annie in Black",
+   "cover": "/assets/audio/album/hollow/cover.jpg",
+    "src": "/assets/audio/album/hollow/002.mp3",
+    "duration": 32,
+    "song_duration": 223
+  },
+  {
+   "slug": "you-were-never-there",
+    "title": "You were never there (Preview)",
+    "artist": "Annie in Black",
+   "cover": "/assets/audio/album/hollow/cover.jpg",
+    "src": "/assets/audio/album/hollow/003.mp3",
+    "duration": 34,
+    "song_duration": 209
+  },
+  {
+    "slug": "paper-dragons",
+    "title": "Paper dragons (Preview)",
+    "artist": "Annie in Black",
+   "cover": "/assets/audio/album/hollow/cover.jpg",
+    "src": "/assets/audio/album/hollow/004.mp3",
+    "duration": 31,
+    "song_duration": 229
+  },
+  {
+    "slug": "truth-hurts",
+    "title": "Truth hurts (Preview)",
+    "artist": "Annie in Black",
+   "cover": "/assets/audio/album/hollow/cover.jpg",
+    "src": "/assets/audio/album/hollow/005.mp3",
+    "duration": 34,
+    "song_duration": 227
+  },
+  {
+    "slug": "glass-crown",
+    "title": "Glass crown (Preview)",
+    "artist": "Annie in Black",
+   "cover": "/assets/audio/album/hollow/cover.jpg",
+    "src": "/assets/audio/album/hollow/006.mp3",
+    "duration": 31,
+    "song_duration": 213
+  },
+  {
+    "slug": "echos-of-your-name",
+    "title": "Echos of your name (Preview)",
+    "artist": "Annie in Black",
+   "cover": "/assets/audio/album/hollow/cover.jpg",
+    "src": "/assets/audio/album/hollow/007.mp3",
+    "duration": 32,
+    "song_duration": 237
+  },
+  {
+    "slug": "how-many-more",
+    "title": "How many more? (Preview)",
+    "artist": "Annie in Black",
+   "cover": "/assets/audio/album/hollow/cover.jpg",
+    "src": "/assets/audio/album/hollow/008.mp3",
+    "duration": 39,
+    "song_duration": 226
+  },
+  {
+    "slug": "footprints",
+    "title": "Footprints (Preview)",
+    "artist": "Annie in Black",
+   "cover": "/assets/audio/album/hollow/cover.jpg",
+    "src": "/assets/audio/album/hollow/009.mp3",
+    "duration": 45,
+    "song_duration": 224
+  },
+  {
+    "slug": "we-will-dance-again",
+    "title": "We will dance again (Preview)",
+    "artist": "Annie in Black",
+   "cover": "/assets/audio/album/hollow/cover.jpg",
+    "src": "/assets/audio/album/hollow/010.mp3",
+    "duration": 34,
+    "song_duration": 233
+  },
+  {
+    "slug": "tears-of-silence",
+    "title": "Tears of silence (Preview)",
+    "artist": "Annie in Black",
+   "cover": "/assets/audio/album/hollow/cover.jpg",
+    "src": "/assets/audio/album/hollow/011.mp3",
+    "duration": 37,
+    "song_duration": 209
+  },
+  {
+    "slug": "monsters-in-the-shadows",
+    "title": "Monsters in the shadows (Preview)",
+    "artist": "Annie in Black",
+   "cover": "/assets/audio/album/hollow/cover.jpg",
+    "src": "/assets/audio/album/hollow/012.mp3",
+    "duration": 36,
+    "song_duration": 226
+  },
+  {
+    "slug": "how-many-more-acoustic",
+    "title": "How many more? (Acoustic) (Preview)",
+    "artist": "Annie in Black",
+   "cover": "/assets/audio/album/hollow/cover.jpg",
+    "src": "/assets/audio/album/hollow/013.mp3",
+    "duration": 48,
+    "song_duration": 223
+  },
+  {
+    "slug": "whisper-in-the-storm",
+    "title": "Whisper in the storm (Preview)",
+    "artist": "Annie in Black",
+   "cover": "/assets/audio/album/hollow/cover.jpg",
+    "src": "/assets/audio/album/hollow/014.mp3",
+    "duration": 36,
+    "song_duration": 237
+  },
+  {
+    "slug": "tomorrow",
+    "title": "Tomorrow (Preview)",
+    "artist": "Annie in Black",
+   "cover": "/assets/audio/album/hollow/cover.jpg",
+    "src": "/assets/audio/album/hollow/015.mp3",
+    "duration": 43,
+    "song_duration": 234
+  }
+]

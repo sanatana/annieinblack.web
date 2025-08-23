@@ -1,6 +1,7 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { thunk } from 'redux-thunk';
 import * as reducers from './slices';
+import { hydratePlayerVolume } from '@src/redux/slices/song/actions';
 
 const RootReducer = combineReducers({
   ...reducers,
@@ -21,5 +22,6 @@ const Store = configureStore({
   devTools: process.env.REACT_APP_ENABLE_DEV_TOOL === 'true',
 });
 
+Store.dispatch(hydratePlayerVolume());
 
 export default Store;

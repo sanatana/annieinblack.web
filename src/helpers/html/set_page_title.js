@@ -20,9 +20,15 @@ const setTitle = (title) => {
 
   const finalTitle = getCleanText(title);
 
-  document.title = finalTitle
-    ? `${finalTitle} - ${process.env.REACT_APP_APPLICATION_NAME}`
-    : `${process.env.REACT_APP_APPLICATION_NAME}`;
+  if (finalTitle && finalTitle.toLowerCase().includes(process.env.REACT_APP_APPLICATION_NAME.toLowerCase() )) {
+    document.title = finalTitle;
+  } else {
+    {
+      document.title = finalTitle
+        ? `${finalTitle} - ${process.env.REACT_APP_APPLICATION_NAME}`
+        : `${process.env.REACT_APP_APPLICATION_NAME}`;
+    }
+  }
 };
 
 const removeDescription = (metaDescription) => {
