@@ -4,10 +4,10 @@ import App from './app/App';
 import i18n from '@src/components/i18n';
 import { I18nextProvider } from 'react-i18next';
 
-import './index.scss';
-// workaround for css scope issue and menu in suspense
-
 import { useEffect } from 'react';
+import useMatomo from '@src/hooks/useMatomo';
+
+import './index.scss';
 
 const container = document.getElementById('root');
 
@@ -37,11 +37,18 @@ const DetectWebPSupport = () => {
   return null;
 };
 
+const Tracker = () => {
+  useMatomo(process.env.REACT_APP_MATOMO_URL, process.env.REACT_APP_MATOMO_SITE_ID);
+
+  return null;
+};
+
 root.render(
   <>
     <BrowserRouter>
       <DetectWebPSupport />
       <I18nextProvider i18n={ i18n }>
+        <Tracker />
         <App />
       </I18nextProvider>
     </BrowserRouter>

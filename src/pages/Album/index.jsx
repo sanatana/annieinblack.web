@@ -13,7 +13,17 @@ import { hideSong, setPlayerVolume, showSong } from '@src/redux/slices/song/acti
 import Songs from './hollow/Songs';
 import { keyboard } from '@src/config';
 
+import iconPause from '@src/assets/images/pause.svg';
+import iconMute  from '@src/assets/images/volume_off.svg';
+import iconVolume  from '@src/assets/images/volume_up.svg';
+
 import './album.scss';
+
+const Empty = () => (
+  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+    <path />
+  </svg>
+);
 
 const PageTitle = () => {
 
@@ -29,7 +39,7 @@ const PageHeader = () => {
     <section className="album__hero">
       <Video/>
       <div className="album__hero-content">
-        <h1>Our Music :: Hollow</h1>
+        <h1 className="h1__title">Our Music - Hollow</h1>
         <h2>Symphony of sorrow my endless refrain...</h2>
       </div>
     </section>
@@ -139,6 +149,21 @@ const SongListener = () => {
   }, [dispatch, navigate, play, song]);
 };
 
+const FaPlay = () => {
+  return (<img src={ iconPlay } alt="Play" />);
+};
+
+const FaPause = () => {
+  return (<img src={ iconPause } alt="Pause" />);
+};
+const FaVolumeUp = () => {
+  return (<img src={ iconVolume } alt="Volume" />);
+};
+
+const FaVolumeMute = () => {
+  return (<img src={ iconMute } alt="Mute" />);
+};
+
 function formatTime(sec) {
   if (!Number.isFinite(sec)) { return '0:00'; }
   const s = Math.max(0, Math.floor(sec));
@@ -208,7 +233,7 @@ const LyricsAndPlayer = () => {
         if (panelRef.current) {
           panelRef.current.classList.add('album__lyrics-panel--show');
         }
-      }, 10);
+      }, 100);
     } else {
       document.body.classList.remove('no-scroll');
       if (panelRef.current) {
@@ -266,6 +291,18 @@ const LyricsAndPlayer = () => {
             volume={ volume }
             onVolumeChange={ volumeChange }
             volumeJumpStep={ 0.1 }
+            customIcons={{
+              play: <FaPlay />,
+              pause: <FaPause />,
+              volume: <FaVolumeUp />,
+              volumeMute: <FaVolumeMute />,
+              rewind:   <Empty />,
+              forward:  <Empty />,
+              previous: <Empty />,
+              next:     <Empty />,
+              loop:    <Empty />,
+              loopOff: <Empty />
+            }}
           />
         </div>
       </div>

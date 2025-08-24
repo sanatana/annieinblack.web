@@ -10,7 +10,7 @@ const Video = () => {
     if (!video) { return; }
 
     // Restore position if saved
-    const savedTime = sessionStorage.getItem('annie-video-time');
+    const savedTime = sessionStorage.getItem('annie-in-black__video-time');
 
     if (savedTime && parseFloat(savedTime) > 0) {
       const apply = () => { video.currentTime = parseFloat(savedTime); };
@@ -27,7 +27,7 @@ const Video = () => {
       const now = Date.now();
       // Only save every 2 seconds
       if (now - lastSaveRef.current >= 2000) {
-        sessionStorage.setItem('annie-video-time', video.currentTime);
+        sessionStorage.setItem('annie-in-black__video-time', video.currentTime);
         lastSaveRef.current = now;
       }
     };

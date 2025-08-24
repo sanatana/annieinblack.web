@@ -24,7 +24,7 @@ const HomeHeader = () => {
       <div className="home-page__hero-content">
         <h1>Annie in Black</h1>
         <img src={ AnnieInBlack } alt="Annie In Black" />
-        <p>soundtracks of loss, regrets and sorrow - dark, honest &amp; true</p>
+        <p>soundtracks of loss, sorrow and regrets - dark, honest &amp; true</p>
       </div>
     </section>
   );
@@ -41,7 +41,7 @@ const NewRelease = () => {
         Hollow blends dark honesty with atmospheric guitars and powerful vocals.
         Songs that echo pain, but still search for meaning in the dark.<br />
 
-        <InternalLink to={ `/our-music/hollow` }>Learn more</InternalLink>
+        <InternalLink to={ `/our-music/hollow` }>About the album</InternalLink>
       </p>
       <article>
         <img className="cover" src="/assets/images/annie-in-black-hollow.jpg" alt="Annie In Black - Hollow" />

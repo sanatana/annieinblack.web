@@ -1,6 +1,7 @@
 import * as types from './types';
 import CustomStore from '@src/helpers/storage';
 import { storage as storageConfig } from '@src/config';
+import { sendApiContactForm } from '@src/helpers/forms/form.helper';
 
 const customStore = new CustomStore();
 
@@ -43,6 +44,22 @@ const clearNotAuthorisedError = () => (dispatch) => {
   dispatch(hideModal());
 };
 
+const sendContactForm = (data) => async () => {
+  return sendApiContactForm(data);
+};
+
+const setTempUtilValue = (name, value) => (dispatch) => {
+  dispatch({
+    type: types.SET_TEMP_UTIL_VALUE,
+    payload: { key: name, data: value },
+  });
+};
+
+const getTempUtilValue = (name) => (dispatch, getState) => {
+  const { temp } = getState().utils;
+  return temp?.[name] || null;
+};
+
 export {
   showStackedToast,
   showNotification,
@@ -50,4 +67,7 @@ export {
   showModal,
   hideModal,
   clearNotAuthorisedError,
+  sendContactForm,
+  setTempUtilValue,
+  getTempUtilValue,
 };

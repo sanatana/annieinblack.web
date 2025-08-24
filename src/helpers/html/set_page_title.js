@@ -1,4 +1,12 @@
 
+const trackPageView = () => {
+  if (window._paq) {
+    window._paq.push(['setCustomUrl', window.location.href]);
+    window._paq.push(['setDocumentTitle', document.title]);
+    window._paq.push(['trackPageView']);
+  }
+};
+
 const getCleanText = (text) => {
   let finalText = text;
   try {
@@ -15,6 +23,7 @@ const getCleanText = (text) => {
 const setTitle = (title) => {
   if (typeof title !== 'string') {
     document.title = process.env.REACT_APP_APPLICATION_NAME || 'Annie in Black';
+    trackPageView();
     return;
   }
 
@@ -22,12 +31,12 @@ const setTitle = (title) => {
 
   if (finalTitle && finalTitle.toLowerCase().includes(process.env.REACT_APP_APPLICATION_NAME.toLowerCase() )) {
     document.title = finalTitle;
+    trackPageView();
   } else {
-    {
-      document.title = finalTitle
-        ? `${finalTitle} - ${process.env.REACT_APP_APPLICATION_NAME}`
-        : `${process.env.REACT_APP_APPLICATION_NAME}`;
-    }
+    document.title = finalTitle
+      ? `${finalTitle} - ${process.env.REACT_APP_APPLICATION_NAME}`
+      : `${process.env.REACT_APP_APPLICATION_NAME}`;
+    trackPageView();
   }
 };
 
@@ -66,7 +75,11 @@ const setCanonical = (url, metaLink, head) => {
     head.appendChild(metaLink);
   }
 
-  metaLink.href = url;
+  if (url.indexOf('http') === 0) {
+    metaLink.href = url;
+  } else {
+    metaLink.href = window.location.origin + url;
+  }
 };
 
 const setPageTitle = (title, description = null, canonicalUrl = null) => {

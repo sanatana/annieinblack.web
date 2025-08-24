@@ -441,6 +441,9 @@ const Songs = ({ slug }) => {
         <div>
           <strong>Footprints</strong>
           <Copy />
+
+          <em className="dedication">For Sergej, whose voice still echoes in our hearts. Safe travels, and Godspeed.</em>
+
           Listening to the sounds of the pouring rain<br />
           Hiding behind a smile, pretending all is fine<br />
           But deep inside, away from prying eyes<br />

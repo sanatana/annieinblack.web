@@ -3,6 +3,7 @@ import './footer.scss';
 import fb from '@src/assets/logos/fb.svg';
 import yt from '@src/assets/logos/youtube.svg';
 import { InternalLink } from '@src/components';
+import { useLocation } from 'react-router-dom';
 
 const Coffee = () => {
   return (
@@ -18,6 +19,17 @@ const Coffee = () => {
   );
 };
 
+const MoraAboutUs = () => {
+  const { pathname } = useLocation();
+  if (pathname.includes('/about-us')) {
+    return null;
+  }
+
+  return (
+    <InternalLink to="/about-us">More about us</InternalLink>
+  );
+};
+
 export default function Footer() {
   return (
     <footer className="footer">
@@ -26,11 +38,11 @@ export default function Footer() {
           <div className="footer__content-about">
             <h3>Annie in Black</h3>
             <p>
-              Annie in Black is an experimental rock band blending emotional depth with melodic intensity.
+              Annie in Black is an experimental rock band blen  ding emotional depth with melodic intensity.
               With heartfelt lyrics, atmospheric guitars, and powerful vocals, their music explores loss, sorrow,
               and inner conflict in songs that are haunting and raw.
               <br />
-              <InternalLink to="/about-us">More about us</InternalLink>
+              <MoraAboutUs />
             </p>
           </div>
 
@@ -54,7 +66,7 @@ export default function Footer() {
       </div>
 
       <div className="footer__copy">
-        &copy; { new Date().getFullYear() } Annie in Black. | Privacy policy
+        &copy; { new Date().getFullYear() } Annie in Black - All rights reserved. | <a href="/privacy-policy">Privacy policy</a>
       </div>
     </footer>
   );

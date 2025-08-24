@@ -18,13 +18,7 @@ process.env.VITE_MATERIAL_ICONS = iconsArray.join(',');
 
 const health = () => {
   const required = [
-    'REACT_APP_REVIEW_SERVICE',
-    'REACT_APP_USER_SERVICE',
     'REACT_APP_APPLICATION_NAME',
-    'REACT_APP_TRACKING_APPLICATION_NAME',
-    'REACT_APP_PROFILE_IMAGES_URL',
-    'REACT_APP_COMPANY_LOGO_IMAGES_URL',
-    'REACT_APP_PUBLIC_SEARCH_API_KEY',
   ];
 
   const missing = required.filter((key) => !process.env[key]);
@@ -61,6 +55,139 @@ function generateVersionFilePlugin() {
     },
   };
 }
+
+function createSiteMap() {
+
+  const base = `https://annieinblack.com/`;
+  const urls = [
+    {
+      uri: '/',
+      frequency: 'daily',
+      priority: '1.00',
+    },
+    {
+      uri: '/about-us',
+      frequency: 'weekly',
+      priority: '0.80',
+    },
+    {
+      uri: '/our-music',
+      frequency: 'daily',
+      priority: '0.90',
+    },
+    {
+      uri: '/our-music/hollow',
+      frequency: 'daily',
+      priority: '0.90',
+    },
+    {
+      uri: '/our-music/hollow/i-remember',
+      frequency: 'weekly',
+      priority: '0.80',
+    },
+    {
+      uri: '/our-music/hollow/hollow',
+      frequency: 'weekly',
+      priority: '0.80',
+    },
+    {
+      uri: '/our-music/hollow/you-were-never-there',
+      frequency: 'weekly',
+      priority: '0.80',
+    },
+    {
+      uri: '/our-music/hollow/paper-dragons',
+      frequency: 'weekly',
+      priority: '0.80',
+    },
+    {
+      uri: '/our-music/hollow/truth-hurts',
+      frequency: 'weekly',
+      priority: '0.80',
+    },
+    {
+      uri: '/our-music/hollow/glass-crown',
+      frequency: 'weekly',
+      priority: '0.80',
+    },
+    {
+      uri: '/our-music/hollow/echos-of-your-name',
+      frequency: 'weekly',
+      priority: '0.80',
+    },
+    {
+      uri: '/our-music/hollow/how-many-more',
+      frequency: 'weekly',
+      priority: '0.80',
+    },
+    {
+      uri: '/our-music/hollow/footprints',
+      frequency: 'weekly',
+      priority: '0.80',
+    },
+    {
+      uri: '/our-music/hollow/we-will-dance-again',
+      frequency: 'weekly',
+      priority: '0.80',
+    },
+    {
+      uri: '/our-music/hollow/tears-of-silence',
+      frequency: 'weekly',
+      priority: '0.80',
+    },
+    {
+      uri: '/our-music/hollow/monsters-in-the-shadows',
+      frequency: 'weekly',
+      priority: '0.80',
+    },
+    {
+      uri: '/our-music/hollow/how-many-more-acoustic',
+      frequency: 'weekly',
+      priority: '0.80',
+    },
+    {
+      uri: '/our-music/hollow/whisper-in-the-storm',
+      frequency: 'weekly',
+      priority: '0.80',
+    },
+    {
+      uri: '/our-music/hollow/tomorrow',
+      frequency: 'weekly',
+      priority: '0.80',
+    },
+    {
+      uri: '/privacy-policy',
+      frequency: 'weekly',
+      priority: '0.70',
+    }
+  ];
+
+  const lines = [`<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    >`];
+
+  urls.forEach((url) => {
+    lines.push(`  <url>
+    <loc>${base + url.uri}</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+    <changefreq>${ url.frequency || 'daily' }</changefreq>
+    <priority>${ url.priority || '1.00'}</priority>
+  </url>`
+    )
+  });
+
+  lines.push(`</urlset>`);
+
+  const outputDir = path.resolve('build');
+  const file = path.join(outputDir, 'sitemap.xml');
+  const map = lines.join('\n');
+  writeFileSync(file, map);
+
+  console.log(`Sitemap created (${file}`);
+}
+
 function flatAssetListPlugin() {
   return {
     name: 'flat-asset-list',
@@ -69,7 +196,7 @@ function flatAssetListPlugin() {
     closeBundle() {
       const outputDir = path.resolve('build');
       const extensions = ['.js', '.css', '.svg', '.png', '.jpg', '.jpeg', '.webp', '.woff2', '.ttf', '.ico', '.mp3', '.json'];
-
+      process.env.REACT_APP_DEPLOYMENT_VERSION = Date.now();
       const walk = (dir) => {
         return readdirSync(dir, { withFileTypes: true }).flatMap(entry => {
           const fullPath = path.join(dir, entry.name);
@@ -85,6 +212,8 @@ function flatAssetListPlugin() {
       const assets = walk(outputDir).sort();
       writeFileSync(path.join(outputDir, '.vite', 'assets.txt'), assets.join('\n'));
       console.log(`✅ flatAssetListPlugin: Wrote ${assets.length} assets to assets.txt`);
+
+      createSiteMap();
     }
   };
 }
@@ -111,18 +240,17 @@ export default defineConfig({
     vitePluginFaviconsInject(
       path.resolve(__dirname, 'src/assets/logos/annie.png'), // inputSource
       {
-        appName: 'Ratecruiter',
-        appShortName: 'Ratecruiter',
-        appDescription: 'Recruiter transparency and accountability platform.',
-        theme_color: '#0d47a1',
-        background: '#ffffff',
+        appName: 'Annie in Black',
+        appShortName: 'Annie In Black',
+        appDescription: 'Soundtracks of loss, sorrow and regrets - dark, honest & true',
+        theme_color: '#ffffff',
+        background: '#000000',
         display: 'standalone',
-        orientation: 'portrait',
         dir: "auto",
         lang: "en-GB",
         icons: {
           favicons: true,
-          android: true,
+          android: false,
           appleIcon: true,
           appleStartup: false,
           windows: false,

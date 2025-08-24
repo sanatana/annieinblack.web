@@ -1,9 +1,9 @@
 import setPageTitle from '@src/helpers/html/set_page_title';
 import AnnieInBlack from '@src/assets/logos/annie-in-black.png';
 import { useEffect } from 'react';
+import { Video } from '@src/components';
 
 import './about.scss';
-import { Video } from '@src/components';
 
 const PageTitle = () => {
 
@@ -17,10 +17,10 @@ const PageTitle = () => {
 const HomeHeader = () => {
   return (
     <section className="about__hero">
-      <Video />
+      <Video/>
 
       <div className="about__hero-content">
-        <h1>About us</h1>
+        <h1 className="h1__title">About us</h1>
         <h2>Who we are? How we got here?</h2>
       </div>
     </section>
@@ -32,11 +32,10 @@ const HomePageContent = () => {
   return (
     <div className="about__content">
       <div className="about__content-1">
-
       </div>
 
       <article className="about__content-2">
-        <img src={ AnnieInBlack } alt="Annie In Black" />
+        <img src={ AnnieInBlack } alt="Annie In Black"/>
 
         <p>Annie in Black began as a handful of childhood friends who first picked up instruments together. Back then it
           was noisy rehearsals in garages and attics, learning how to turn feelings into sound, and dreaming bigger than
@@ -57,9 +56,9 @@ const HomePageContent = () => {
           moments that shaped us, and of connecting with anyone who has faced their own battles in silence.</p>
 
         <p>We don’t pretend to offer easy answers. What we do is carve something honest from the noise: music that
-          speaks to the weight of memory, the sting of absence, and the small defiance of creating words where once there
+          speaks to the weight of memory, the sting of absence, and the small defiance of creating words where once
+          there
           was only silence.</p>
-
       </article>
     </div>
   );
@@ -70,7 +69,7 @@ const HomePage = () => {
     <div className="about">
       <PageTitle/>
       <HomeHeader/>
-      <HomePageContent />
+      <HomePageContent/>
     </div>
   );
 };

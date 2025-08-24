@@ -20,7 +20,7 @@ const HomeHeader = () => {
       <Video/>
 
       <div className="music__hero-content">
-        <h1>Our Music</h1>
+        <h1 className="h1__title">Our Music</h1>
         <h2>Echoes of loss, memory, and shadows</h2>
       </div>
     </section>
@@ -46,7 +46,7 @@ const AlbumList = () => {
                 Songs that echo pain, but still search for meaning in the dark.
               </em>
 
-              <p>Learn more</p>
+              <p>Read more about the album &amp; lyrics</p>
             </div>
           </InternalLink>
         </li>

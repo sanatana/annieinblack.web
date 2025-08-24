@@ -1,3 +1,13 @@
 .page__loader--loading {
   padding: 3rem;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+
+  img {
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+  }
 }

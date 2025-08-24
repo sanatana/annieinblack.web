@@ -6,47 +6,25 @@ const About = PageLoader(lazy(() => import('./pages/About')));
 const Music = PageLoader(lazy(() => import('./pages/Music')));
 const Album = PageLoader(lazy(() => import('./pages/Album')));
 const NotFound = PageLoader(lazy(() => import('./pages/404')));
+const Contact = PageLoader(lazy(() => import('./pages/Contact')));
+const Privacy = PageLoader(lazy(() => import('./pages/Privacy')));
 
 const routes = [
   {
-    path: '/',
     element: <>
-      <Layout><Home/></Layout>
+      <Layout />
     </>,
-  },
-  {
-    path: '/about-us',
-    element: <>
-      <Layout><About/></Layout>
-    </>,
-  },
-  {
-    path: '/our-music',
-    element: <>
-      <Layout><Music/></Layout>
-    </>,
-  },
-  {
-    path: '/our-music/hollow',
-    element: <>
-      <Layout><Album/></Layout>
-    </>,
-  },
-  {
-    path: '/our-music/hollow/:song',
-    element: <>
-      <Layout><Album/></Layout>
-    </>,
-  },
-  {
-    path: '/our-music/hollow/:song/:play',
-    element: <>
-      <Layout><Album/></Layout>
-    </>,
-  },
-  {
-    path: '*',
-    element: <Layout><NotFound /></Layout>,
+    children: [
+      { path: '/', element: <Home /> },
+      { path: '/about-us', element: <About /> },
+      { path: '/contact-us', element: <Contact /> },
+      { path: '/our-music', element: <Music /> },
+      { path: '/our-music/hollow', element: <Album /> },
+      { path: '/our-music/hollow/:song', element: <Album /> },
+      { path: '/our-music/hollow/:song/:play', element: <Album /> },
+      { path: '/privacy-policy', element: <Privacy /> },
+      { path: '*', element: <NotFound /> },
+    ]
   },
 ];
 

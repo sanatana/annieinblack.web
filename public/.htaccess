@@ -1,0 +1,49 @@
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType font/woff  .woff
+  AddType font/otf   .otf
+  AddType font/ttf   .ttf
+  AddType application/vnd.ms-fontobject .eot
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  RewriteRule . /index.html [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+
+ Header always set X-Annie-in-black "Rock on!!!"
+ Header always unset X-Powered-By
+ Header always unset Etag
+ Header always unset Set-Cookie
+ Header always set Strict-Transport-Security "max-age=86400; includeSubDomains; preload"
+
+ <FilesMatch "\.(ttf|woff2|woff|otf)$">
+    Header set Cache-Control "public, max-age=31536000, s-maxage=31536000, immutable"
+    Header set Cloudflare-CDN-Cache-Control "s-maxage=31536000, stale-while-revalidate=86400, stale-if-error=86400"
+    Header always unset Set-Cookie
+    Header always unset X-Powered-By
+    Header always set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+
+  <FilesMatch "\.(html?)$">
+        Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://uni.annieinblack.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://challenges.cloudflare.com https://uni.annieinblack.com; font-src 'self'; connect-src 'self' https://uni.annieinblack.com https://api.annieinblack.com https://challenges.cloudflare.com wss://uni.annieinblack.com wss://api.annieinblack.com; media-src 'self'; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests"
+       Header set Cache-Control "public, max-age=10, s-maxage=10"
+    </FilesMatch>
+
+  <FilesMatch "\.(json|txt)$">
+    Header set Cache-Control "public, max-age=30"
+  </FilesMatch>
+
+  <FilesMatch "\.(js|css|mp3|png|jpe?g|gif|mp4|webm|svg|woff2?|otf|ttf|eot)$">
+    Header always unset Set-Cookie
+    Header always unset X-Powered-By
+    Header set Cache-Control "public, max-age=31536000, s-maxage=31536000, immutable"
+    Header set Cloudflare-CDN-Cache-Control "s-maxage=31536000, stale-while-revalidate=86400, stale-if-error=86400"
+  </FilesMatch>
+</IfModule>

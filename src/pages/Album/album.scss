@@ -137,6 +137,26 @@ $panel-background: #2b2b2b;
           opacity: 0.75;
         }
 
+        .dedication {
+          display: block;
+          margin-bottom: 3rem;
+          font-style: italic;
+          position: relative;
+          padding-left: 4rem;
+
+          &:before {
+            position: absolute;
+            display: inline-block;
+            content: "“";
+            font-size: 6rem;
+            font-family: "Georgia", "Book Antiqua", "Times New Roman";
+            top: -10px;
+            line-height: 1;
+            left: 10px;
+            opacity: 0.5;
+          }
+        }
+
         strong {
           display: block;
           margin-top: 1rem;

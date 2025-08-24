@@ -5,7 +5,7 @@
 .head-menu {
   position: fixed;
   top: 0;
-  padding: 20px 20px 16px 20px;
+  padding: 20px 20px 16px 0;
   background-color: transparent;
   transition: background-color 0.5s ease;
   color: #fff;
@@ -34,7 +34,26 @@
     }
   }
 
-  img {
+  .head-menu__mobile-menu-trigger {
+    position: absolute;
+    right: 20px;
+    background-color: transparent;
+    border: 0;
+    padding: 5px;
+    top: 14px;
+    display: none;
+
+    @include responsive.max-width(700) {
+      display: inline-block;
+    }
+
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  img.logo {
     height: 30px;
     flex: none;
     opacity: 0;
@@ -50,7 +69,7 @@
   }
 
   &--sticky {
-    background-color: rgba(0 0 0 / 80%);
+    background-color: rgba(0 0 0 / 90%);
 
     img {
       opacity: 1;
@@ -61,7 +80,7 @@
 
   &__links {
     display: flex;
-    gap: 1rem;
+    gap: 1.8rem;
 
     a {
       text-decoration: none;
@@ -70,6 +89,10 @@
       display: inline-block;
       font-size: 1.3rem;
       font-weight: 400;
+
+      &.head-menu__links-mobile-logo {
+        display: none;
+      }
 
       &:after {
         content: '';
@@ -90,7 +113,66 @@
 
         &:after {
           left: 0;
+          opacity: 0.75;
+        }
+      }
+
+      &.selected {
+        &:after {
+          left: 0;
           opacity: 1;
+        }
+      }
+    }
+
+    & {
+      @include responsive.max-width(700) {
+        overflow: hidden;
+        flex-direction: column;
+        background-color: #0c0c0c;
+        position: fixed;
+        right: -100%;
+        left: unset;
+        bottom: 0;
+        width: 80vw;
+        padding: 30px;
+        overflow: auto;
+        padding-bottom: 80px;
+        transition: right 0.5s ease-in-out;
+
+        a {
+          font-size: 2.6rem;
+          padding-bottom: 6px;
+
+          &:before {
+            content: "";
+            display: block;
+            height: 1px;
+            background-color: rgba(255 255 255 / 25%);
+            position: absolute;
+            bottom: -8px;
+            width: 100%;
+          }
+
+          &.head-menu__links-mobile-logo {
+            display: block;
+
+            &:before {
+              display: none;
+            }
+
+            img {
+              margin-left: auto;
+              margin-right: auto;
+              max-width: 200px;
+              width: 40vw;
+              margin-bottom: 2rem;
+            }
+
+            &:after {
+              display: none !important;
+            }
+          }
         }
       }
     }
@@ -98,11 +180,40 @@
 
   & {
     @include responsive.max-width(700) {
-      flex-direction: column;
+      display: flex;
 
       .head-menu__links {
+        top: 0;
         position: fixed;
-        left: -1000vw;
+        //left: -1000vw;
+      }
+    }
+  }
+}
+
+body {
+  .menu {
+    display: inline-block;
+  }
+
+  .close {
+    display: none;
+  }
+
+  &.mobile-menu--open {
+
+    .menu {
+      display: none;
+    }
+
+    .close {
+      display: inline-block;
+    }
+
+    @include responsive.max-width(700) {
+      .head-menu__links {
+        display: flex;
+        right : 0;
       }
     }
   }

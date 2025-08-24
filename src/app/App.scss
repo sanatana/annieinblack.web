@@ -1,12 +1,14 @@
 @use '../assets/scss/mixins/container' as container;
 @use '../assets/scss/variables' as variables;
+@use '../assets/scss/responsive' as responsive;
 
 @font-face {
   font-family: 'annieInBlack';
   font-style: normal;
   font-weight: normal;
   font-display: swap;
-  src: url(/fonts/ComforterBrush-Regular.ttf) format('truetype');
+  src: url('/fonts/ComforterBrush-Regular.woff2') format('woff2'),
+       url(/fonts/ComforterBrush-Regular.ttf) format('truetype');
 }
 
 @font-face {
@@ -14,7 +16,8 @@
   font-style: normal;
   font-weight: normal;
   font-display: swap;
-  src: url(/fonts/Poppins-Regular.ttf) format('truetype');
+  src: url(/fonts/Poppins-Regular.woff2) format('woff2'),
+       url(/fonts/Poppins-Regular.ttf) format('truetype');
 }
 
 @font-face {
@@ -22,7 +25,8 @@
   font-weight: normal;
   font-display: swap;
   font-style: italic;
-  src: url(/fonts/Poppins-Italic.ttf) format('truetype');
+  src: url(/fonts/Poppins-Italic.woff2) format('woff2'),
+       url(/fonts/Poppins-Italic.ttf) format('truetype');
 }
 
 @font-face {
@@ -30,7 +34,8 @@
   font-style: normal;
   font-weight: bold;
   font-display: swap;
-  src: url(/fonts/Poppins-Bold.ttf) format('truetype');
+  src: url(/fonts/Poppins-Bold.woff2) format('woff2'),
+  url(/fonts/Poppins-Bold.ttf) format('truetype');
 }
 
 body {
@@ -119,4 +124,23 @@ h1, h2, h3, h4, h5, h6 {
 
 b, strong {
   font-weight: 500
+}
+
+.h1__title {
+  border-bottom: 1px solid variables.$brand-color;
+  margin-bottom: 4px;
+  max-width: 900px;
+
+  & {
+    @include responsive.max-width(700) {
+      max-width: 100%;
+    }
+  }
+
+  &~h2 {
+    font-weight: normal;
+    font-size: 3rem;
+    font-style: italic;
+    line-height: 1.4;
+  }
 }

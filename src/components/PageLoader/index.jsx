@@ -8,7 +8,10 @@ const PageLazyLoader = (Component) => (props) => {
     <Suspense fallback={
       <>
         <div className="page__loader--loading">
-          <Loading />
+          <div>
+            <img src="/assets/images/annie-in-black.png" alt="Annie in Black"/>
+            <Loading/>
+          </div>
         </div>
       </>
     }>

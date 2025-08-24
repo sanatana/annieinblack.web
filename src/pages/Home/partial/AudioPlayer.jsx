@@ -9,10 +9,10 @@ import iconNext  from '@src/assets/images/keyboard_double_arrow_right.svg';
 
 import iconMute  from '@src/assets/images/volume_off.svg';
 import iconVolume  from '@src/assets/images/volume_up.svg';
-
-import './audio_player.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPlayerVolume } from '@src/redux/slices/song/actions';
+
+import './audio_player.scss';
 
 function formatTime(s) {
   if (!Number.isFinite(s) || s < 0) { return '0:00'; }

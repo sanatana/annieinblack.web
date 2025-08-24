@@ -8776,6 +8776,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nanoid@npm:^5.1.5":
+  version: 5.1.5
+  resolution: "nanoid@npm:5.1.5"
+  bin:
+    nanoid: bin/nanoid.js
+  checksum: 10/6de2d006b51c983be385ef7ee285f7f2a57bd96f8c0ca881c4111461644bd81fafc2544f8e07cb834ca0f3e0f3f676c1fe78052183f008b0809efe6e273119f5
+  languageName: node
+  linkType: hard
+
 "natural-compare@npm:^1.4.0":
   version: 1.4.0
   resolution: "natural-compare@npm:1.4.0"
@@ -10045,6 +10054,7 @@ __metadata:
     jose: "npm:^6.0.10"
     lz-string: "npm:^1.5.0"
     mime: "npm:^4.0.6"
+    nanoid: "npm:^5.1.5"
     prettier: "npm:^3.5.3"
     prop-types: "npm:^15.8.1"
     react: "npm:^19.0.0"
