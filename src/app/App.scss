@@ -38,6 +38,16 @@
   url(/fonts/Poppins-Bold.ttf) format('truetype');
 }
 
+html { color-scheme: light; }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: variables.$background-color !important;
+    color: #fff;
+  }
+}
+
+
 body {
   background-color: variables.$background-color;
 

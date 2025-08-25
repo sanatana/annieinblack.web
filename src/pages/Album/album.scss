@@ -13,7 +13,7 @@ $panel-background: #2b2b2b;
       width: 100%;
       display: flex;
       justify-content: center;
-      background-color: #2b2b2b;
+      background-color: #2b2b2b !important;
       box-shadow: -30px -38px 20px 0px #2b2b2b;
     }
 
@@ -21,7 +21,7 @@ $panel-background: #2b2b2b;
       position: fixed;
       top: 0;
       bottom: 0;
-      background-color: $panel-background;
+      background-color: $panel-background !important;
       z-index: 10;
       right: -100%;
       overflow-y: scroll;
@@ -31,6 +31,10 @@ $panel-background: #2b2b2b;
       padding-bottom: 0;
       transition: right 0.5s ease-in-out, width 0.25s ease-in-out;
       border-left: 1px solid rgba(255 255 255 / 25%);
+
+      @media (prefers-color-scheme: dark) {
+        background-color: $panel-background !important;
+      }
 
       & {
         @include responsive.max-width(700) {
@@ -274,7 +278,7 @@ $panel-background: #2b2b2b;
         position: absolute;
         bottom: 0;
         height: 1px;
-        background-color: variables.$brand-color;
+        background-color: variables.$brand-color !important;
         width: 100%;
         left: -100%;
         transition: left 0.25s ease;
@@ -430,7 +434,7 @@ $panel-background: #2b2b2b;
 
       &:hover {
         text-decoration: none;
-        background-color: variables.$brand-color;
+        background-color: variables.$brand-color !important;
         box-shadow: 0 0 35px rgba(255 255 255 / 50%);
       }
     }
