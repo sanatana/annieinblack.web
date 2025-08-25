@@ -2,6 +2,7 @@ import { useCallback, useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Footer, HeadMenu } from '@src/components';
+import CookieBanner from '@src/components/CookieBanner';
 
 const Index = ({ children }) => {
   const { pathname, state } = useLocation();
@@ -31,6 +32,7 @@ const Index = ({ children }) => {
           <Outlet />
         </div>
 
+        <CookieBanner />
         <Footer />
       </div>
     </>

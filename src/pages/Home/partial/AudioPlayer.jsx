@@ -11,6 +11,7 @@ import iconMute  from '@src/assets/images/volume_off.svg';
 import iconVolume  from '@src/assets/images/volume_up.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPlayerVolume } from '@src/redux/slices/song/actions';
+import { trackEvent } from '@src/helpers/stats';
 
 import './audio_player.scss';
 
@@ -20,6 +21,18 @@ function formatTime(s) {
   const sec = Math.floor(s % 60);
   return `${m}:${sec < 10 ? '0' : ''}${sec}`;
 }
+
+const removePreview = (title) => {
+  return title.replace(/\(Preview\)/i, '').trim();
+};
+
+const trackPlay = (songTitle, action) => {
+  trackEvent('AudioPlayerHomePage', action, removePreview(songTitle));
+};
+
+const trackClickPlay = (songTitle) => {
+  trackEvent('AudioPlayerHomePage', 'Click', removePreview(songTitle));
+};
 
 const AudioPlayer = ({ tracks = [] }) => {
   const [index, setIndex] = useState(-1);
@@ -61,18 +74,31 @@ const AudioPlayer = ({ tracks = [] }) => {
   }, []);
 
   const togglePlay = useCallback(() => {
-    if (isPlaying) { pause(); } else { play(); }
+    if (isPlaying) {
+      pause();
+    } else {
+      play();
+    }
   }, [isPlaying, play, pause]);
 
   const next = useCallback(() => {
-    setIndex(i => (i + 1) % tracks.length);
+    setIndex(i => {
+      const newIndex = (i + 1) % tracks.length;
+      trackPlay(tracks[newIndex].title, 'Next');
+      return newIndex;
+    });
+
     setIsPlaying(false);
-  }, [tracks.length]);
+  }, [tracks]);
 
   const prev = useCallback(() => {
-    setIndex(i => (i - 1 + tracks.length) % tracks.length);
+    setIndex(i => {
+      const newIndex = (i - 1 + tracks.length) % tracks.length;
+      trackPlay(tracks[newIndex].title, 'Prev');
+      return newIndex;
+    });
     setIsPlaying(false);
-  }, [tracks.length]);
+  }, [tracks]);
 
   const onLoadedMetadata = useCallback(() => {
     const a = audioRef.current;
@@ -178,7 +204,10 @@ const AudioPlayer = ({ tracks = [] }) => {
             <button
               key={ `${t.id || t.src}-${i}` }
               className={ `album-player__item${i === index ? ' is-active' : ''}` }
-              onClick={ () => onSelectTrack(i) }
+              onClick={ () => {
+                onSelectTrack(i);
+                trackClickPlay(tracks[i].title);
+              } }
               aria-current={ i === index ? 'true' : 'false' }
             >
               <div className="album-player__meta">
@@ -200,14 +229,17 @@ const AudioPlayer = ({ tracks = [] }) => {
             <button className="album-player__btn" onClick={ prev } aria-label="Previous">
               <img src={ iconPrev } alt="Previous song" />
             </button>
-            <button className="album-player__btn plp-primary" onClick={ () => {
-              if (index === -1) {
-                setIndex(0);
-                return;
+            <button
+              className="album-player__btn plp-primary"
+              onClick={ () => {
+                if (index === -1) {
+                  trackPlay(tracks[0].title, 'Play');
+                  setIndex(0);
+                  return;
+                }
+                togglePlay();
               }
-              togglePlay();
-            }
-            } aria-label={ isPlaying ? 'Pause' : 'Play' }>
+              } aria-label={ isPlaying ? 'Pause' : 'Play' }>
               { isPlaying ? (
                 <img src={ iconPause } alt="Pause" />
               ) : (

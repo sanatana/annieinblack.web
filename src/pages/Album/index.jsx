@@ -18,6 +18,7 @@ import iconMute  from '@src/assets/images/volume_off.svg';
 import iconVolume  from '@src/assets/images/volume_up.svg';
 
 import './album.scss';
+import { trackEvent, trackExternalLink } from '@src/helpers/stats';
 
 const Empty = () => (
   <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
@@ -87,15 +88,25 @@ const SongList = () => {
       <div className="album__links-wrapper">
         <p>Now available on:</p>
         <div className="album__links">
-          <a target="_blank" rel="nofollow noopener noreferrer"
+          <a
+            onClick={ trackExternalLink }
+            target="_blank" rel="nofollow noopener noreferrer"
             href="https://open.spotify.com/album/0l4vbw7bPxNVOwUyx2RaRL">Spotify</a>
-          <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.amazon.com/dp/B0FN5DXJJ2">Amazon</a>
-          <a target="_blank" rel="nofollow noopener noreferrer"
+          <a
+            onClick={ trackExternalLink }
+            target="_blank" rel="nofollow noopener noreferrer" href="https://www.amazon.com/dp/B0FN5DXJJ2">Amazon</a>
+          <a
+            onClick={ trackExternalLink }
+            target="_blank" rel="nofollow noopener noreferrer"
             href="https://itunes.apple.com/album/id1834542160?ls=1&app=itunes">iTunes</a>
-          <a target="_blank" rel="nofollow noopener noreferrer"
+          <a
+            onClick={ trackExternalLink }
+            target="_blank" rel="nofollow noopener noreferrer"
             href="https://music.youtube.com/watch?v=AnpA--zGgT4&list=OLAK5uy_mQSyoPMgglQXTsafZ951L1ufkxpxJkq08">YouTube
             music</a>
-          <a target="_blank" rel="nofollow noopener noreferrer"
+          <a
+            onClick={ trackExternalLink }
+            target="_blank" rel="nofollow noopener noreferrer"
             href="https://annieinblack.bandcamp.com/album/hollow">BandCamp</a>
         </div>
       </div>
@@ -113,8 +124,8 @@ const PageContent = () => {
 
       <div className="album__content-2">
         <p>Album <strong>Hollow</strong> was born from silence, grief, and memories of those we’ve lost - friends and family taken by
-          illness or self-harm and struggles too heavy to carry. Some songs reflect on those dark thoughts directly, others on the
-          sorrow and emptiness left behind.</p>
+          illness or self-harm and struggles too heavy to carry. Some songs reflect on those dark thoughts directly,
+          others on the sorrow and emptiness left behind.</p>
 
         <p>
           The title Hollow comes from that feeling of being emptied out, when no one is around and the mind fills with
@@ -139,9 +150,12 @@ const SongListener = () => {
       if (targetSong) {
         const index = trackList.findIndex((track) => track.slug === song);
         dispatch(showSong(targetSong, play === 'play', index ));
+
         if (play && play !== 'play') {
           navigate(`/our-music/hollow/${targetSong.slug}`, { state: { noScroll: true } });
         }
+      } else {
+        navigate(`/our-music/hollow`, { replace: true });
       }
     } else {
       dispatch(hideSong());
@@ -171,6 +185,18 @@ function formatTime(sec) {
   const r = s % 60;
   return `${m}:${r < 10 ? '0' : ''}${r}`;
 }
+
+const removePreview = (title) => {
+  return title.replace(/\(Preview\)/i, '').trim();
+};
+
+const trackPlay = (songTitle) => {
+  if (!songTitle) {
+    return;
+  }
+
+  trackEvent('AudioPlayerLyrics', 'Play', removePreview(songTitle));
+};
 
 const LyricsAndPlayer = () => {
   const { play, show, data, volume } = useSelector((state) => state.song);
@@ -247,7 +273,6 @@ const LyricsAndPlayer = () => {
   }, [show]);
 
   useEffect(() => {
-
     if (show && data.slug && data.title) {
       setPageTitle(`Song: ${data.title} by Annie in Black`, `${data.title} by Annie in Black from album Hollow`, `/our-music/hollow/${data.slug}`);
     } else {
@@ -291,6 +316,9 @@ const LyricsAndPlayer = () => {
             volume={ volume }
             onVolumeChange={ volumeChange }
             volumeJumpStep={ 0.1 }
+            onPlay={ () => {
+              trackPlay(data?.title);
+            } }
             customIcons={{
               play: <FaPlay />,
               pause: <FaPause />,

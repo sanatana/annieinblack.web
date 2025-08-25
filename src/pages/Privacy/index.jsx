@@ -37,26 +37,27 @@ const HomePageContent = () => {
       <article className="privacy__content-2">
 
         <p>At Annie in Black, your privacy matters to us. This Privacy Policy explains how we handle information when
-          you use
-          our website.</p>
+          you use our website.</p>
 
         <h3>What We Collect</h3>
 
         <p>We do not collect personally identifiable information.</p>
 
-        <p>Our internal analytics system (Matomo) sets first-party cookies in your browser. These cookies contain an
-          anonymised visitor identifier and session details that help us understand how people use our website. They cannot be used
-          to identify you personally.</p>
+        <p>With your consent, our internal analytics system sets first-party cookies in your browser. These
+          cookies contain an anonymised visitor identifier and session details that help us understand how people use
+          our website. They cannot be used to identify you personally.</p>
 
         <h3>How We Use Data</h3>
 
-        <p>The anonymised data collected through cookies and visitor IDs is used solely for improving the performance,
-          content, and overall experience of our website. We do not build personal profiles of visitors.</p>
+        <p>The anonymised data collected through analytics cookies and visitor IDs is used solely for improving the
+          performance, content, and overall experience of our website. We do not build personal profiles of
+          visitors.</p>
 
         <h3>Cookies</h3>
 
-        <p>The cookies set by our analytics are first-party cookies only and are not shared with any third parties. They
-          typically expire after 13 months (visitor cookie) or 30 minutes (session cookie).</p>
+        <p>Analytics cookies are only placed if you choose to accept them. They are first-party cookies only and are
+          not shared with any third parties. They typically expire after 13 months (visitor cookie) or 30 minutes
+          (session cookie).</p>
 
         <h3>Sharing of Data</h3>
 
@@ -64,13 +65,14 @@ const HomePageContent = () => {
 
         <h3>Your Control</h3>
 
-        <p>You can clear your browser cookies and storage at any time to remove analytics identifiers. If you have any
-          concerns or questions about our privacy practices, please contact us at [insert email address].</p>
+        <p>You can accept or decline analytics cookies at any time using the cookie banner. You can also clear your
+          browser cookies and storage to remove analytics identifiers. If you have any concerns or questions about
+          our privacy practices, please contact us at [insert email address].</p>
 
         <h3>Changes to This Policy</h3>
 
-        <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated
-          date.</p>
+        <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an
+          updated date.</p>
 
       </article>
 

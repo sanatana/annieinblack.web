@@ -55,14 +55,13 @@ const getVisitorId = () => {
 
 const useMatomo = (matomoUrl, siteId) => {
   useEffect(() => {
-    if (window._paq) { return; }
+    if (!matomoUrl || !siteId) { return; }
+    if (window.__MATOMO_BOOTSTRAPPED__) { return; }
 
-    if (!matomoUrl || !siteId) {
-      return;
-    }
-
+    window.__MATOMO_BOOTSTRAPPED__ = true;
     const visitorId = getVisitorId();
     window._paq = window._paq || [];
+    window._paq.push(['requireCookieConsent']);
     window._paq.push(['setRequestMethod', 'POST']);
     window._paq.push(['setUserId', visitorId]);
     window._paq.push(['setSiteId', siteId]);

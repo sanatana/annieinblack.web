@@ -56,9 +56,13 @@ function generateVersionFilePlugin() {
   };
 }
 
+function displayEnvVars() {
+  console.log(process.env.REACT_APP_MATOMO_URL);
+}
+
 function createSiteMap() {
 
-  const base = `https://annieinblack.com/`;
+  const base = `https://annieinblack.com`;
   const urls = [
     {
       uri: '/',
@@ -214,6 +218,7 @@ function flatAssetListPlugin() {
       console.log(`✅ flatAssetListPlugin: Wrote ${assets.length} assets to assets.txt`);
 
       createSiteMap();
+      displayEnvVars();
     }
   };
 }
