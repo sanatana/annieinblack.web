@@ -123,15 +123,10 @@ const PageContent = () => {
       </div>
 
       <div className="album__content-2">
-        <p>Album <strong>Hollow</strong> was born from silence, grief, and memories of those we’ve lost - friends and family taken by
-          illness or self-harm and struggles too heavy to carry. Some songs reflect on those dark thoughts directly,
-          others on the sorrow and emptiness left behind.</p>
-
-        <p>
-          The title Hollow comes from that feeling of being emptied out, when no one is around and the mind fills with
-          shadows. It’s the word that captures both absence and echo - the weight of loss, and the silence it leaves
-          behind.</p>
-
+        <p>Album <strong>Hollow</strong> was born from silence, grief, and the memories of those we’ve lost — friends and family taken by illness, self-harm, or struggles too heavy to carry. These songs carry fragments of that experience: some give voice to the darkness itself, others linger in the sorrow, the loneliness, and the empty spaces left behind. They also touch on the senselessness of war — the way it leaves only absence, pain, and questions that can never be answered.
+        </p>
+        <p>The title Hollow speaks to that feeling of being emptied out, when the noise of the world fades and only shadows remain. It is both absence and echo — the weight of loss, and the silence that follows. Each track is a reflection of that space, where grief, memory, and fragile resilience come together in sound.
+        </p>
         <SongList/>
 
       </div>

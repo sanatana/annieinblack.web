@@ -6,7 +6,8 @@
     "cover": "/assets/audio/album/hollow/cover.jpg",
     "src": "/assets/audio/album/hollow/001.mp3",
     "duration": 66,
-    "song_duration": 231
+    "song_duration": 231,
+    "lyrics": "Sebastian Stadler"
   },
   {
     "slug": "hollow",
@@ -15,7 +16,8 @@
    "cover": "/assets/audio/album/hollow/cover.jpg",
     "src": "/assets/audio/album/hollow/002.mp3",
     "duration": 32,
-    "song_duration": 223
+    "song_duration": 223,
+    "lyrics": "Sebastian Stadler"
   },
   {
    "slug": "you-were-never-there",
@@ -24,7 +26,8 @@
    "cover": "/assets/audio/album/hollow/cover.jpg",
     "src": "/assets/audio/album/hollow/003.mp3",
     "duration": 34,
-    "song_duration": 209
+    "song_duration": 209,
+    "lyrics": "Sebastian Stadler"
   },
   {
     "slug": "paper-dragons",
@@ -33,7 +36,8 @@
    "cover": "/assets/audio/album/hollow/cover.jpg",
     "src": "/assets/audio/album/hollow/004.mp3",
     "duration": 31,
-    "song_duration": 229
+    "song_duration": 229,
+    "lyrics": "Sebastian Stadler"
   },
   {
     "slug": "truth-hurts",
@@ -42,7 +46,8 @@
    "cover": "/assets/audio/album/hollow/cover.jpg",
     "src": "/assets/audio/album/hollow/005.mp3",
     "duration": 34,
-    "song_duration": 227
+    "song_duration": 227,
+    "lyrics": "Sebastian Stadler"
   },
   {
     "slug": "glass-crown",
@@ -51,7 +56,8 @@
    "cover": "/assets/audio/album/hollow/cover.jpg",
     "src": "/assets/audio/album/hollow/006.mp3",
     "duration": 31,
-    "song_duration": 213
+    "song_duration": 213,
+    "lyrics": "Sebastian Stadler"
   },
   {
     "slug": "echos-of-your-name",
@@ -60,7 +66,8 @@
    "cover": "/assets/audio/album/hollow/cover.jpg",
     "src": "/assets/audio/album/hollow/007.mp3",
     "duration": 32,
-    "song_duration": 237
+    "song_duration": 237,
+    "lyrics": "Sebastian Stadler"
   },
   {
     "slug": "how-many-more",
@@ -69,7 +76,8 @@
    "cover": "/assets/audio/album/hollow/cover.jpg",
     "src": "/assets/audio/album/hollow/008.mp3",
     "duration": 39,
-    "song_duration": 226
+    "song_duration": 226,
+    "lyrics": "Sebastian Stadler"
   },
   {
     "slug": "footprints",
@@ -78,7 +86,8 @@
    "cover": "/assets/audio/album/hollow/cover.jpg",
     "src": "/assets/audio/album/hollow/009.mp3",
     "duration": 45,
-    "song_duration": 224
+    "song_duration": 224,
+    "lyrics": "Sebastian Stadler"
   },
   {
     "slug": "we-will-dance-again",
@@ -87,7 +96,8 @@
    "cover": "/assets/audio/album/hollow/cover.jpg",
     "src": "/assets/audio/album/hollow/010.mp3",
     "duration": 34,
-    "song_duration": 233
+    "song_duration": 233,
+    "lyrics": "Sebastian Stadler"
   },
   {
     "slug": "tears-of-silence",
@@ -96,7 +106,8 @@
    "cover": "/assets/audio/album/hollow/cover.jpg",
     "src": "/assets/audio/album/hollow/011.mp3",
     "duration": 37,
-    "song_duration": 209
+    "song_duration": 209,
+    "lyrics": "Sebastian Stadler"
   },
   {
     "slug": "monsters-in-the-shadows",
@@ -105,7 +116,8 @@
    "cover": "/assets/audio/album/hollow/cover.jpg",
     "src": "/assets/audio/album/hollow/012.mp3",
     "duration": 36,
-    "song_duration": 226
+    "song_duration": 226,
+    "lyrics": "Sebastian Stadler"
   },
   {
     "slug": "how-many-more-acoustic",
@@ -114,7 +126,8 @@
    "cover": "/assets/audio/album/hollow/cover.jpg",
     "src": "/assets/audio/album/hollow/013.mp3",
     "duration": 48,
-    "song_duration": 223
+    "song_duration": 223,
+    "lyrics": "Sebastian Stadler"
   },
   {
     "slug": "whisper-in-the-storm",
@@ -123,7 +136,8 @@
    "cover": "/assets/audio/album/hollow/cover.jpg",
     "src": "/assets/audio/album/hollow/014.mp3",
     "duration": 36,
-    "song_duration": 237
+    "song_duration": 237,
+    "lyrics": "Sebastian Stadler"
   },
   {
     "slug": "tomorrow",
@@ -132,6 +146,7 @@
    "cover": "/assets/audio/album/hollow/cover.jpg",
     "src": "/assets/audio/album/hollow/015.mp3",
     "duration": 43,
-    "song_duration": 234
+    "song_duration": 234,
+    "lyrics": "Sebastian Stadler"
   }
 ]

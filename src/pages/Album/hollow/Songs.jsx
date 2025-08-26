@@ -4,6 +4,12 @@ const Copy = () => {
   );
 };
 
+const Authors = () => {
+  return (
+    <div className="author">Lyrics by: Sebastian Stadler</div>
+  );
+};
+
 const Songs = ({ slug }) => {
 
   switch (slug) {
@@ -11,6 +17,7 @@ const Songs = ({ slug }) => {
       return (
         <div>
           <strong>I remember</strong>
+          <Authors />
           <Copy />
 
           I still remember the way you smiled<br/>
@@ -55,6 +62,7 @@ const Songs = ({ slug }) => {
       return (
         <div>
           <strong>Hollow</strong>
+          <Authors />
           <Copy />
 
           When I lay my head to rest<br />
@@ -99,6 +107,7 @@ const Songs = ({ slug }) => {
       return (
         <div>
           <strong>You were never here</strong>
+          <Authors />
           <Copy />
           hmmm... hmmm...  mmm...<br />
           <br />
@@ -153,6 +162,7 @@ const Songs = ({ slug }) => {
       return (
         <div>
           <strong>Paper dragons</strong>
+          <Authors />
           <Copy />
 
           Paper dragons... high in the sky<br />
@@ -197,6 +207,7 @@ const Songs = ({ slug }) => {
       return (
         <div>
           <strong>Truth hurts</strong>
+          <Authors />
           <Copy />
 
           I walk alone through empty streets<br />
@@ -255,6 +266,7 @@ const Songs = ({ slug }) => {
       return (
         <div>
           <strong>Glass crown</strong>
+          <Authors />
           <Copy />
 
           You wore a smile like a mask<br />
@@ -321,6 +333,7 @@ const Songs = ({ slug }) => {
       return (
         <div>
           <strong>Echos of your name</strong>
+          <Authors />
           <Copy />
           I saw you standing in the rain<br />
           A smile of hope I couldn&apos;t hold<br />
@@ -379,6 +392,7 @@ const Songs = ({ slug }) => {
       return (
         <div>
           <strong>How many more</strong>
+          <Authors />
           <Copy />
           You draw lines on paper and in dirt<br />
           you ignore where the story ends<br />
@@ -440,6 +454,7 @@ const Songs = ({ slug }) => {
       return (
         <div>
           <strong>Footprints</strong>
+          <Authors />
           <Copy />
 
           <em className="dedication">For Sergej, whose voice still echoes in our hearts. Safe travels, and Godspeed.</em>
@@ -488,6 +503,7 @@ const Songs = ({ slug }) => {
       return (
         <div>
           <strong>We will dance again</strong>
+          <Authors />
           <Copy />
           You were a laughter in the pouring rain<br />
           A star in the midnight sky<br />
@@ -540,6 +556,7 @@ const Songs = ({ slug }) => {
       return (
         <div>
           <strong>Tears of silence</strong>
+          <Authors />
           <Copy />
           I woke up in a room away from home<br />
           Faded pictures of times long gone<br />
@@ -594,6 +611,7 @@ const Songs = ({ slug }) => {
       return (
         <div>
           <strong>Monsters in the shadows</strong>
+          <Authors />
           <Copy />
           Sitting in the dark alone, the walls are closing in<br />
           Voices in my head are only whispers of the wind<br />
@@ -650,6 +668,7 @@ const Songs = ({ slug }) => {
       return (
         <div>
           <strong>How many more (acoustic)</strong>
+          <Authors />
           <Copy />
           You draw lines on paper and in dirt<br />
           You ignore where the story ends<br />
@@ -708,6 +727,7 @@ const Songs = ({ slug }) => {
       return (
         <div>
           <strong>Whisper in the storm</strong>
+          <Authors />
           <Copy />
           Standing on the edge, no one&apos;s around<br />
           Waves below, a sweet end I dreamed about<br />
@@ -767,6 +787,7 @@ const Songs = ({ slug }) => {
       return (
         <div>
           <strong>Whisper in the storm</strong>
+          <Authors />
           <Copy />
           Another sleepless night goes by<br />
           The silence louder than my cries<br />

@@ -42,7 +42,7 @@ const NewRelease = () => {
         Hollow blends dark honesty with atmospheric guitars and powerful vocals.
         Songs that echo pain, but still somehow search for meaning in the dark.<br />
 
-        <InternalLink to={ `/our-music/hollow` }>About the album</InternalLink>
+        <InternalLink to={ `/our-music/hollow` }>Behind Hollow + lyrics</InternalLink>
       </p>
       <article>
         <img className="cover" src="/assets/images/annie-in-black-hollow.jpg" alt="Annie In Black - Hollow" />

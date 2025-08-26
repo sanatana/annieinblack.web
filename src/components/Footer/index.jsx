@@ -38,8 +38,8 @@ export default function Footer() {
           <div className="footer__content-about">
             <h3>Annie in Black</h3>
             <p>
-              Annie in Black is an experimental rock band blen  ding emotional depth with melodic intensity.
-              With heartfelt lyrics, atmospheric guitars, and powerful vocals, their music explores loss, sorrow,
+              Annie in Black is an experimental rock band blending emotional depth with melodic intensity.
+              With heartfelt lyrics, atmospheric guitars, and powerful vocals, our music explores loss, sorrow,
               and inner conflict in songs that are haunting and raw.
               <br />
               <MoraAboutUs />

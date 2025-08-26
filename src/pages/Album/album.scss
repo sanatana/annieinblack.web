@@ -8,7 +8,7 @@ $panel-background: #2b2b2b;
   &__lyrics {
     &-player {
       position: sticky;
-      bottom: 0px;
+      bottom: 0;
       padding-bottom: 20px;
       width: 100%;
       display: flex;
@@ -132,6 +132,12 @@ $panel-background: #2b2b2b;
           right: 0;
           bottom: 0;
           background-color: rgba(0 0 0 / 0%);
+        }
+
+        .author {
+          font-size: 1.3rem;
+          display: block;
+          padding-bottom: 1rem;
         }
 
         .copy {

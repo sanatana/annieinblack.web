@@ -149,11 +149,12 @@ const AudioPlayer = ({ tracks = [] }) => {
     if (i === index) {
       isPlaying ? a.pause() : a.play().catch(() => {});
       setIsPlaying(p => !p);
-      return;
+      return false;
     }
 
     // Switch track and play immediately
     setIndex(i);
+    return true;
   }, [index, isPlaying]);
 
   useEffect(() => {
@@ -205,8 +206,9 @@ const AudioPlayer = ({ tracks = [] }) => {
               key={ `${t.id || t.src}-${i}` }
               className={ `album-player__item${i === index ? ' is-active' : ''}` }
               onClick={ () => {
-                onSelectTrack(i);
-                trackClickPlay(tracks[i].title);
+                if (onSelectTrack(i)) {
+                  trackClickPlay(tracks[i].title);
+                }
               } }
               aria-current={ i === index ? 'true' : 'false' }
             >
