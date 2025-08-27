@@ -16,6 +16,9 @@ const __dirname = path.dirname(__filename);
 import iconsArray from './vite.application_icons.mjs';
 process.env.VITE_MATERIAL_ICONS = iconsArray.join(',');
 
+import poems from './src/data/poetry';
+import songsHollow from './src/data/hollow';
+
 const health = () => {
   const required = [
     'REACT_APP_APPLICATION_NAME',
@@ -85,86 +88,27 @@ function createSiteMap() {
       priority: '0.90',
     },
     {
-      uri: '/our-music/hollow/i-remember',
-      frequency: 'weekly',
-      priority: '0.80',
-    },
-    {
-      uri: '/our-music/hollow/hollow',
-      frequency: 'weekly',
-      priority: '0.80',
-    },
-    {
-      uri: '/our-music/hollow/you-were-never-there',
-      frequency: 'weekly',
-      priority: '0.80',
-    },
-    {
-      uri: '/our-music/hollow/paper-dragons',
-      frequency: 'weekly',
-      priority: '0.80',
-    },
-    {
-      uri: '/our-music/hollow/truth-hurts',
-      frequency: 'weekly',
-      priority: '0.80',
-    },
-    {
-      uri: '/our-music/hollow/glass-crown',
-      frequency: 'weekly',
-      priority: '0.80',
-    },
-    {
-      uri: '/our-music/hollow/echos-of-your-name',
-      frequency: 'weekly',
-      priority: '0.80',
-    },
-    {
-      uri: '/our-music/hollow/how-many-more',
-      frequency: 'weekly',
-      priority: '0.80',
-    },
-    {
-      uri: '/our-music/hollow/footprints',
-      frequency: 'weekly',
-      priority: '0.80',
-    },
-    {
-      uri: '/our-music/hollow/we-will-dance-again',
-      frequency: 'weekly',
-      priority: '0.80',
-    },
-    {
-      uri: '/our-music/hollow/tears-of-silence',
-      frequency: 'weekly',
-      priority: '0.80',
-    },
-    {
-      uri: '/our-music/hollow/monsters-in-the-shadows',
-      frequency: 'weekly',
-      priority: '0.80',
-    },
-    {
-      uri: '/our-music/hollow/how-many-more-acoustic',
-      frequency: 'weekly',
-      priority: '0.80',
-    },
-    {
-      uri: '/our-music/hollow/whisper-in-the-storm',
-      frequency: 'weekly',
-      priority: '0.80',
-    },
-    {
-      uri: '/our-music/hollow/tomorrow',
-      frequency: 'weekly',
-      priority: '0.80',
-    },
-    {
       uri: '/privacy-policy',
       frequency: 'weekly',
       priority: '0.70',
     }
   ];
+
+  songsHollow.forEach((song) => {
+    urls.push({
+      uri: `/our-music/hollow/${song.slug}`,
+      frequency: 'weekly',
+      priority: '0.80',
+    });
+  });
+
+  poems.forEach((poem) => {
+    urls.push({
+      uri: `/our-poetry/${poem.slug}`,
+      frequency: 'weekly',
+      priority: '0.80',
+    });
+  });
 
   const lines = [`<?xml version="1.0" encoding="UTF-8"?>
 <urlset

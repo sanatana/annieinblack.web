@@ -118,6 +118,7 @@ $panel-background: #2b2b2b;
       font-style: italic;
       position: relative;
       padding-left: 4rem;
+      opacity: 0.85;
 
       &:before {
         position: absolute;
@@ -130,9 +131,13 @@ $panel-background: #2b2b2b;
         left: 10px;
         opacity: 0.5;
       }
+
+      &-bottom {
+        margin-top: 5rem;
+      }
     }
 
-    strong {
+    strong, h2 {
       display: block;
       margin-top: 1rem;
       margin-bottom: 1rem;

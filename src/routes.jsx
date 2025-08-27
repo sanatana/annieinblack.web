@@ -8,6 +8,7 @@ const Album = PageLoader(lazy(() => import('./pages/Album')));
 const NotFound = PageLoader(lazy(() => import('./pages/404')));
 const Contact = PageLoader(lazy(() => import('./pages/Contact')));
 const Privacy = PageLoader(lazy(() => import('./pages/Privacy')));
+const Poetry = PageLoader(lazy(() => import('./pages/Poetry')));
 const PrivacyNoTrack = PageLoader(lazy(() => import('./pages/PrivacyNoTracking')));
 const PrivacyTrack = PageLoader(lazy(() => import('./pages/PrivacyTracking')));
 
@@ -21,6 +22,8 @@ const routes = [
       { path: '/about-us', element: <About /> },
       { path: '/contact-us', element: <Contact /> },
       { path: '/our-music', element: <Music /> },
+      { path: '/our-poetry', element: <Poetry /> },
+      { path: '/our-poetry/:poem', element: <Poetry /> },
       { path: '/our-music/hollow', element: <Album /> },
       { path: '/our-music/hollow/:song', element: <Album /> },
       { path: '/our-music/hollow/:song/:play', element: <Album /> },

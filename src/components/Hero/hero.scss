@@ -1,0 +1,76 @@
+@use "../../assets/scss/variables" as variables;
+@use "../../assets/scss/mixins/container" as container;
+@use "../../assets/scss/responsive" as responsive;
+
+.hero {
+  height: 450px;
+  margin-bottom: 4rem;
+  overflow: hidden;
+  position: relative;
+  max-height: 80vh;
+
+  &:before {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 0;
+    background-color: rgba(0 0 0 / 50%);
+    background-image: url("/assets/images/grid.gif");
+  }
+
+  &:after {
+    display: block;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    z-index: 0;
+    background: linear-gradient(0deg,rgba(0, 0, 0, 1) 5%, rgba(0, 0, 0, 0) 100%);
+    top: 0;
+    width: 100%;
+  }
+
+  video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+  }
+
+  &__content {
+    z-index: 3;
+    padding: 20px;
+    position: absolute;
+    width: 100%;
+    bottom: 2rem;
+    font-size: 3rem;
+
+    & {
+      @include container.container();
+    }
+
+    & {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    img {
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      padding-top: 8px;
+      font-size: 1.4rem;
+      opacity: 0.9;
+    }
+  }
+}
