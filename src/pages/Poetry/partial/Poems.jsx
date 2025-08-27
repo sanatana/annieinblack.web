@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 const Copy = () => {
   return (
     <div className="copy">&copy; 2025 Annie in Black, all rights reserved.</div>
@@ -11,7 +13,6 @@ const Author = ({ children }) => {
 };
 
 const Goddess = () => {
-
   return (
     <article>
       <h2>Goddess of Spring</h2>
@@ -39,6 +40,11 @@ const Goddess = () => {
         To Vesna — my high school sweetheart, my first love, my first kiss.
         You left us far too soon.
         You’ll always have a place in my heart, and always be a part of me.
+
+        <small>
+          ** Vesna is the Slavic goddess of spring, youth, fertility,
+          and love, a figure of rejuvenation and abundance who brings warmth and life after winter.
+        </small>
       </div>
     </article>
   );

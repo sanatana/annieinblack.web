@@ -8,6 +8,10 @@ import setPageTitle from '@src/helpers/html/set_page_title';
 import { useNavigate, useParams } from 'react-router-dom';
 const Poems = Loadable(lazy(() => import('@src/pages/Poetry/partial/Poems')));
 
+const setDefaultTitle = () => {
+  setPageTitle('Our Poetry', 'Words that linger when the music falls silent...');
+};
+
 const PoemListener = () => {
   const { poem } = useParams();
   const navigate = useNavigate();
@@ -21,7 +25,13 @@ const PoemListener = () => {
       const allowedSlugs = list.map((item) =>item.slug);
       if (allowedSlugs.indexOf(poem) === -1) {
         navigate('/our-poetry', { state: { noScroll: true }, replace: true });
+        setDefaultTitle();
+      } else {
+        const targetPoem = list.find((item) => item.slug === poem);
+        setPageTitle(`Poem: ${targetPoem.title}`, 'Words that linger when the music falls silent...');
       }
+    } else {
+      setDefaultTitle();
     }
   }, [poem, navigate]);
 
@@ -58,7 +68,7 @@ const PoetryList = () => {
 
 const Poetry = () => {
   useEffect(() => {
-    setPageTitle('Our Poetry', 'Words that linger when the music falls silent...');
+    setDefaultTitle();
   }, []);
 
   return (
