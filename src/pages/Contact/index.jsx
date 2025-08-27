@@ -3,10 +3,10 @@ import { useForm } from 'react-hook-form';
 import { useEffect, useRef, useCallback } from 'react';
 import { LoadingIndicator, Video } from '@src/components';
 const SITE_KEY = process.env.REACT_APP_TURNSTILE_SITE_ID;
-
-import './contact.scss';
 import { sendContactForm, setTempUtilValue } from '@src/redux/slices/utils/actions';
 import { useDispatch, useSelector } from 'react-redux';
+
+import './contact.scss';
 
 const PageTitle = () => {
 

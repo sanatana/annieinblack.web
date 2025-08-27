@@ -1,14 +1,16 @@
 import setPageTitle from '@src/helpers/html/set_page_title';
 import AnnieInBlack from '@src/assets/logos/annie-in-black.png';
 import AudioPlayer from '@src/pages/Home/partial/AudioPlayer';
-import { useCallback, useEffect } from 'react';
+import { lazy, useCallback, useEffect } from 'react';
 import hollowTracks from '@src/data/hollow';
-import { InternalLink, LyricsPanel, Video, WaveForm } from '@src/components';
+import { InternalLink, Loadable, LyricsPanel, Video, WaveForm } from '@src/components';
 import { trackEvent, trackExternalLink } from '@src/helpers/stats';
 import { useDispatch, useSelector } from 'react-redux';
 import { setTempUtilValue } from '@src/redux/slices/utils/actions';
 
 import './home_page.scss';
+
+const Songs = Loadable(lazy(() => import('@src/pages/Album/hollow/Songs')));
 
 const removePreview = (title) => {
   if (!title) {
@@ -53,7 +55,9 @@ const Lyrics = () => {
   }, [dispatch]);
 
   return (
-    <LyricsPanel slug={ openLyrics?.slug } close={ close } />
+    <LyricsPanel slug={ openLyrics?.slug } close={ close } >
+      <Songs slug={ openLyrics?.slug }/>
+    </LyricsPanel>
   );
 };
 

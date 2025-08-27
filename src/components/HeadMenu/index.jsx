@@ -21,6 +21,7 @@ const Links = () => {
     <>
       <InternalLink onClick={ onClick } clickThrough to="/about-us" className={ pathname.indexOf('/about-us') === 0 ? 'selected' : '' }>About</InternalLink>
       <InternalLink onClick={ onClick } clickThrough to="/our-music" className={ pathname.indexOf('/our-music') === 0 ? 'selected' : '' }>Music</InternalLink>
+      <InternalLink onClick={ onClick } clickThrough to="/our-poetry" className={ pathname.indexOf('/our-poetry') === 0 ? 'selected' : '' }>Poetry</InternalLink>
       <InternalLink onClick={ onClick } clickThrough to="/contact-us" className={ pathname.indexOf('/contact-us') === 0 ? 'selected' : '' }>Contact</InternalLink>
     </>
   );

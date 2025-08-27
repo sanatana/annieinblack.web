@@ -1,10 +1,8 @@
-import { Loadable } from '@src/components';
-import { lazy, useCallback, useEffect, useRef } from 'react';
-const Songs = Loadable(lazy(() => import('@src/pages/Album/hollow/Songs')));
+import { useCallback, useEffect, useRef } from 'react';
 
 import './lyrics-panel.scss';
 
-const LyricsPanel = ({ close = () => null, slug }) => {
+const LyricsPanel = ({ close = () => null, slug, children }) => {
   const panelRef = useRef(null);
 
   const handleClose = useCallback(() => {
@@ -39,7 +37,7 @@ const LyricsPanel = ({ close = () => null, slug }) => {
 
         <div className="lyrics-panel__inner">
           <div className="lyrics-panel__text">
-            <Songs slug={ slug }/>
+            { !!children && (children) }
           </div>
         </div>
       </div>
