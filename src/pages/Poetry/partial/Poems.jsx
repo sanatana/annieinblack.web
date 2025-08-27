@@ -15,7 +15,7 @@ const Goddess = () => {
   return (
     <article>
       <h2>Goddess of Spring</h2>
-      <Author>Sebastjan Stadler</Author>
+      <Author>Sebastian Stadler</Author>
       <Copy/>
       In the gardens of dawn, a blossom awake,<br/>
       A goddess of spring, unfurled in the light.<br/>
@@ -48,7 +48,7 @@ const Delight = () => {
   return (
     <article>
       <h2>Mother&apos;s delight</h2>
-      <Author>Sebastjan Stadler</Author>
+      <Author>Sebastian Stadler</Author>
       <Copy/>
       In the warmth of morning dawn, a new life awaits,<br/>
       each breath, a promise of hope gently creates.<br/>
