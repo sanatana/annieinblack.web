@@ -1,12 +1,25 @@
 import setPageTitle from '@src/helpers/html/set_page_title';
 import AnnieInBlack from '@src/assets/logos/annie-in-black.png';
 import AudioPlayer from '@src/pages/Home/partial/AudioPlayer';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import hollowTracks from '@src/data/hollow';
-import { InternalLink, Video } from '@src/components';
+import { InternalLink, LyricsPanel, Video, WaveForm } from '@src/components';
+import { trackEvent, trackExternalLink } from '@src/helpers/stats';
+import { useDispatch, useSelector } from 'react-redux';
+import { setTempUtilValue } from '@src/redux/slices/utils/actions';
 
 import './home_page.scss';
-import { trackExternalLink } from '@src/helpers/stats';
+
+const removePreview = (title) => {
+  if (!title) {
+    return null;
+  }
+  return title.replace(/\(Preview\)/i, '').trim();
+};
+
+const trackClickLyrics = (songTitle) => {
+  trackEvent('ShowLyrics', 'Click', removePreview(songTitle));
+};
 
 const PageTitle = () => {
 
@@ -31,7 +44,68 @@ const HomeHeader = () => {
   );
 };
 
+const Lyrics = () => {
+  const dispatch = useDispatch();
+  const { openLyrics } = useSelector((state) => state.utils.temp);
+
+  const close = useCallback(() => {
+    dispatch(setTempUtilValue('openLyrics', null));
+  }, [dispatch]);
+
+  return (
+    <LyricsPanel slug={ openLyrics?.slug } close={ close } />
+  );
+};
+
+const SongPlayingIndicator = () => {
+  const dispatch = useDispatch();
+
+  const { songPlaying } = useSelector((state) => state.utils.temp);
+
+  const showLyrics = useCallback((song) => {
+    trackClickLyrics(song?.title);
+    dispatch(setTempUtilValue('openLyrics', { slug: song?.slug, show: true }));
+  }, [dispatch]);
+
+  if (!songPlaying) {
+    return (
+      <div className="now-playing">
+        <div className="now-playing__title">
+          <div>&nbsp;</div>
+          <em>&nbsp;</em>
+          <button>lyrics</button>
+        </div>
+
+        <div className="waveform" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="now-playing now-playing--open">
+      <div className="now-playing__title">
+        <div>{ removePreview(songPlaying?.title) }</div>
+        <em>
+          { songPlaying?.artist }
+        </em>
+
+        <button onClick={ () => showLyrics(songPlaying) }>Show lyrics</button>
+      </div>
+      <WaveForm />
+    </div>
+  );
+};
+
 const NewRelease = () => {
+  const dispatch = useDispatch();
+  const onSongPlay = useCallback((song) => {
+    dispatch(setTempUtilValue('songPlaying', song));
+  }, [dispatch]);
+
+  const onSongStop = useCallback(() => {
+    dispatch(setTempUtilValue('songPlaying', null));
+  }, [dispatch]);
+
   return (
     <section className="new-release">
       <h2>New release</h2>
@@ -48,7 +122,7 @@ const NewRelease = () => {
         <img className="cover" src="/assets/images/annie-in-black-hollow.jpg" alt="Annie In Black - Hollow" />
 
         <div className="new-release__play-list">
-          <AudioPlayer tracks={ hollowTracks } />
+          <AudioPlayer tracks={ hollowTracks } onSongPlay={ onSongPlay } onSongStop={ onSongStop } />
         </div>
       </article>
 
@@ -81,6 +155,8 @@ const HomePage = () => {
       <PageTitle/>
       <HomeHeader/>
       <HomePageContent />
+      <SongPlayingIndicator />
+      <Lyrics/>
     </div>
   );
 };

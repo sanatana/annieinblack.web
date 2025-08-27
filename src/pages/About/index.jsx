@@ -39,12 +39,13 @@ const HomePageContent = () => {
 
         <p>Annie in Black began as a handful of childhood friends who first picked up instruments together. Back then it
           was noisy rehearsals in garages and attics, learning how to turn feelings into sound, and dreaming bigger than
-          the small towns we grew up in. Life, as it often does, pulled us apart — careers, families, responsibilities —
+          the small town we grew up in. Life, as it often does, pulled us apart — careers, families, responsibilities —
           until the music became a memory of youth.</p>
 
         <p>Years later, scattered across different countries, we found our way back to each other — not just to relive
           the
-          past, but because the weight of time had changed us. Technology became the bridge, letting us share ideas,
+          past, but because the weight of time had changed us. Technology and internet became the bridge,
+          letting us share ideas,
           fragments of riffs, and late-night lyrics across borders until songs began to form again. Along the road, we
           lost friends — some who once stood beside us in those first versions of the band — to struggles with mental
           health and to the cruelty of cancer. Their absence left a silence we couldn’t ignore, a silence that pushed us

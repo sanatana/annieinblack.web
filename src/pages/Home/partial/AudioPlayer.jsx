@@ -34,7 +34,31 @@ const trackClickPlay = (songTitle) => {
   trackEvent('AudioPlayerHomePage', 'Click', removePreview(songTitle));
 };
 
-const AudioPlayer = ({ tracks = [] }) => {
+const scrollToActiveSong = (parent) => {
+  if (!parent) { return; }
+
+  const scroller = parent.querySelector('.simplebar-content-wrapper');
+  if (!scroller) { return; }
+
+  const el = scroller.querySelector('.is-active');
+  if (!el) { return; }
+
+  const parentRect = scroller.getBoundingClientRect();
+  const childRect = el.getBoundingClientRect();
+
+  const above = childRect.top < parentRect.top;
+  const below = childRect.bottom > parentRect.bottom;
+
+  if (above) {
+    const delta = parentRect.top - childRect.top;
+    scroller.scrollTo({ top: scroller.scrollTop - delta, behavior: 'smooth' });
+  } else if (below) {
+    const delta = childRect.bottom - parentRect.bottom;
+    scroller.scrollTo({ top: scroller.scrollTop + delta, behavior: 'smooth' });
+  }
+};
+
+const AudioPlayer = ({ tracks = [], onSongPlay, onSongStop }) => {
   const [index, setIndex] = useState(-1);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
@@ -63,8 +87,11 @@ const AudioPlayer = ({ tracks = [] }) => {
     try {
       await a.play();
       setIsPlaying(true);
+      if (onSongPlay) {
+        onSongPlay(tracks[index]);
+      }
     } catch { /* empty */ }
-  }, []);
+  }, [index, onSongPlay, tracks]);
 
   const pause = useCallback(() => {
     const a = audioRef.current;
@@ -85,20 +112,22 @@ const AudioPlayer = ({ tracks = [] }) => {
     setIndex(i => {
       const newIndex = (i + 1) % tracks.length;
       trackPlay(tracks[newIndex].title, 'Next');
+      onSongPlay(tracks[newIndex]);
       return newIndex;
     });
 
     setIsPlaying(false);
-  }, [tracks]);
+  }, [onSongPlay, tracks]);
 
   const prev = useCallback(() => {
     setIndex(i => {
       const newIndex = (i - 1 + tracks.length) % tracks.length;
       trackPlay(tracks[newIndex].title, 'Prev');
+      onSongPlay(tracks[newIndex]);
       return newIndex;
     });
     setIsPlaying(false);
-  }, [tracks]);
+  }, [onSongPlay, tracks]);
 
   const onLoadedMetadata = useCallback(() => {
     const a = audioRef.current;
@@ -178,10 +207,8 @@ const AudioPlayer = ({ tracks = [] }) => {
         }
 
         try {
-          const el = containerRef.current.querySelector('.is-active');
-          if (el) {
-            el.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
-          }
+          scrollToActiveSong(containerRef.current);
+
         } catch { /* empty */ }
       }).catch(() => {});
     tryPlay();
@@ -206,8 +233,9 @@ const AudioPlayer = ({ tracks = [] }) => {
               key={ `${t.id || t.src}-${i}` }
               className={ `album-player__item${i === index ? ' is-active' : ''}` }
               onClick={ () => {
-                if (onSelectTrack(i)) {
+                if (onSelectTrack(i) && index !== i) {
                   trackClickPlay(tracks[i].title);
+                  onSongPlay(tracks[i]);
                 }
               } }
               aria-current={ i === index ? 'true' : 'false' }
@@ -234,9 +262,14 @@ const AudioPlayer = ({ tracks = [] }) => {
             <button
               className="album-player__btn plp-primary"
               onClick={ () => {
+                if (isPlaying) {
+                  onSongStop();
+                }
+
                 if (index === -1) {
                   trackPlay(tracks[0].title, 'Play');
                   setIndex(0);
+                  onSongPlay(tracks[0]);
                   return;
                 }
                 togglePlay();
