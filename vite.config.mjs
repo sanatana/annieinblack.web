@@ -10,6 +10,7 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 import svgr from 'vite-plugin-svgr';
 import { writeFileSync, mkdirSync, readFileSync, readdirSync } from 'fs';
+import archiver from "archiver";
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -163,17 +164,40 @@ const createAssetsFile = () => {
   console.log(`✅ flatAssetListPlugin: Wrote ${assets.length} assets to assets.txt`);
 }
 
+const emptyTempZip = () => {
 
-const zipBuildFolder = async () => {
+  const files = ['build.zip', 'build_prod.zip', 'build_local.zip', 'build_production.zip', 'build_dev.zip'];
+  files.forEach((file) => {
+    const outPath = path.resolve(__dirname, ".temp", file);
+    if (fs.existsSync(outPath)) {
+      fs.rmSync(outPath);
+    }
+  });
+}
+
+const zipBuildFolder = async (mode) => {
+  emptyTempZip();
   const distDir = path.resolve(__dirname, "build");
-  const outPath = path.resolve(distDir, ".temp", "/build.zip");
+  const outPath = path.resolve(__dirname, ".temp", `build_${mode}.zip`);
 
   await new Promise((resolve, reject) => {
     const output = fs.createWriteStream(outPath);
     const archive = archiver("zip", { zlib: { level: 9 } });
 
-    output.on("close", resolve);
-    archive.on("error", reject);
+    console.log(`Zipping build: ${distDir}`);
+    output.on("close", () => {
+      console.log(`Zip file ready at: ${outPath}`);
+      resolve();
+    });
+    archive.on("error", (e) => {
+      console.error(e);
+      reject(e);
+    });
+
+    archive.on("warning", (err) => {
+      // Non-fatal warnings (e.g., missing files). Log or treat as error if you prefer strictness.
+      console.warn("archiver warning:", err);
+    });
 
     archive.pipe(output);
     archive.directory(distDir, false); // add all files in dist/
@@ -182,14 +206,19 @@ const zipBuildFolder = async () => {
 }
 
 function finalizeBuild() {
+  let mode;
+
   return {
     name: 'finalize-build',
     apply: 'build',
+    configResolved(config) {
+      mode = config.mode;                 // gets --mode value (e.g. prod, staging)
+    },
     enforce: 'post', // ensures it runs last
     closeBundle: async () => {
       createAssetsFile();
       createSiteMap();
-      await zipBuildFolder();
+      await zipBuildFolder(mode);
       displayEnvVars();
     }
   };
