@@ -6,6 +6,7 @@ import viteCompression from 'vite-plugin-compression';
 import vitePluginFaviconsInject from 'vite-plugin-favicons-inject';
 import envCompatible from 'vite-plugin-env-compatible';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 import svgr from 'vite-plugin-svgr';
 import { writeFileSync, mkdirSync, readFileSync, readdirSync } from 'fs';
@@ -91,6 +92,11 @@ function createSiteMap() {
       uri: '/privacy-policy',
       frequency: 'weekly',
       priority: '0.70',
+    },
+    {
+      uri: '/our-poetry',
+      frequency: 'daily',
+      priority: '0.80',
     }
   ];
 
@@ -136,32 +142,54 @@ function createSiteMap() {
   console.log(`Sitemap created (${file}`);
 }
 
-function flatAssetListPlugin() {
+const createAssetsFile = () => {
+  const outputDir = path.resolve('build');
+  const extensions = ['.js', '.css', '.svg', '.png', '.jpg', '.jpeg', '.webp', '.woff2', '.ttf', '.ico', '.mp3', '.json'];
+  process.env.REACT_APP_DEPLOYMENT_VERSION = Date.now();
+  const walk = (dir) => {
+    return readdirSync(dir, { withFileTypes: true }).flatMap(entry => {
+      const fullPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) return walk(fullPath);
+      const ext = path.extname(entry.name).toLowerCase();
+      if (extensions.includes(ext)) {
+        return [path.relative(outputDir, fullPath).replaceAll(path.sep, '/')];
+      }
+      return [];
+    });
+  };
+
+  const assets = walk(outputDir).sort();
+  writeFileSync(path.join(outputDir, '.vite', 'assets.txt'), assets.join('\n'));
+  console.log(`✅ flatAssetListPlugin: Wrote ${assets.length} assets to assets.txt`);
+}
+
+
+const zipBuildFolder = async () => {
+  const distDir = path.resolve(__dirname, "build");
+  const outPath = path.resolve(distDir, ".temp", "/build.zip");
+
+  await new Promise((resolve, reject) => {
+    const output = fs.createWriteStream(outPath);
+    const archive = archiver("zip", { zlib: { level: 9 } });
+
+    output.on("close", resolve);
+    archive.on("error", reject);
+
+    archive.pipe(output);
+    archive.directory(distDir, false); // add all files in dist/
+    archive.finalize();
+  });
+}
+
+function finalizeBuild() {
   return {
-    name: 'flat-asset-list',
+    name: 'finalize-build',
     apply: 'build',
     enforce: 'post', // ensures it runs last
-    closeBundle() {
-      const outputDir = path.resolve('build');
-      const extensions = ['.js', '.css', '.svg', '.png', '.jpg', '.jpeg', '.webp', '.woff2', '.ttf', '.ico', '.mp3', '.json'];
-      process.env.REACT_APP_DEPLOYMENT_VERSION = Date.now();
-      const walk = (dir) => {
-        return readdirSync(dir, { withFileTypes: true }).flatMap(entry => {
-          const fullPath = path.join(dir, entry.name);
-          if (entry.isDirectory()) return walk(fullPath);
-          const ext = path.extname(entry.name).toLowerCase();
-          if (extensions.includes(ext)) {
-            return [path.relative(outputDir, fullPath).replaceAll(path.sep, '/')];
-          }
-          return [];
-        });
-      };
-
-      const assets = walk(outputDir).sort();
-      writeFileSync(path.join(outputDir, '.vite', 'assets.txt'), assets.join('\n'));
-      console.log(`✅ flatAssetListPlugin: Wrote ${assets.length} assets to assets.txt`);
-
+    closeBundle: async () => {
+      createAssetsFile();
       createSiteMap();
+      await zipBuildFolder();
       displayEnvVars();
     }
   };
@@ -212,7 +240,7 @@ export default defineConfig({
     // viteCompression(),
     legacy(),
     generateVersionFilePlugin(),
-    flatAssetListPlugin(),
+    finalizeBuild(),
   ],
   optimizeDeps: {
     include: ['@emotion/styled'],
