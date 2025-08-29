@@ -6,7 +6,7 @@ const Copy = () => {
 
 const Authors = () => {
   return (
-    <div className="author">Lyrics by: Sebastian Stadler</div>
+    <div className="author">Lyrics by: Sebastjan Stadler</div>
   );
 };
 

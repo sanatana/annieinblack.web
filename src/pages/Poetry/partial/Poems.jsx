@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { InternalLink } from '@src/components';
 
 const Copy = () => {
   return (
@@ -16,7 +17,7 @@ const Goddess = () => {
   return (
     <article>
       <h2>Goddess of Spring</h2>
-      <Author>Sebastian Stadler</Author>
+      <Author>Sebastjan Stadler</Author>
       <Copy/>
       In the gardens of dawn, a blossom awake,<br/>
       A goddess of spring, unfurled in the light.<br/>
@@ -38,13 +39,22 @@ const Goddess = () => {
 
       <div className="dedication dedication-bottom">
         To Vesna — my high school sweetheart, my first love, my first kiss.
-        You left us far too soon.
-        You’ll always have a place in my heart, and always be a part of me.
+        You left us too soon, yet you’ll always be in my heart, in my memories, in poems and songs,
+        and in my dreams where I still whisper the words left unsaid.
 
         <small>
           ** Vesna is the Slavic goddess of spring, youth, fertility,
           and love, a figure of rejuvenation and abundance who brings warmth and life after winter.
         </small>
+
+        <ul>
+          <li className="dedication-list__title">
+            In memory of Vesna and other friends we&apos;ve lost:
+          </li>
+          <li>
+            <InternalLink to={ `/our-music/hollow/i-remember` }>I remember</InternalLink>
+          </li>
+        </ul>
       </div>
     </article>
   );
@@ -54,7 +64,7 @@ const Delight = () => {
   return (
     <article>
       <h2>Mother&apos;s delight</h2>
-      <Author>Sebastian Stadler</Author>
+      <Author>Sebastjan Stadler</Author>
       <Copy/>
       In the warmth of morning dawn, a new life awaits,<br/>
       each breath, a promise of hope gently creates.<br/>

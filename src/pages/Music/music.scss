@@ -22,6 +22,19 @@
       &-title {
         font-size: 1.8rem;
       }
+
+      &-more {
+        color: variables.$brand-color;
+
+        @media (prefers-color-scheme: dark) {
+          color: variables.$brand-color !important;
+        }
+
+        &:hover {
+          text-decoration: underline;
+          text-underline-offset: 6px;
+        }
+      }
     }
 
     li {

@@ -46,7 +46,7 @@ const AlbumList = () => {
                 Songs that echo pain, but still search for meaning in the dark.
               </em>
 
-              <p>Read more about the album &amp; lyrics</p>
+              <p className="music__list-item-more">Read more about the album &amp; lyrics</p>
             </div>
           </InternalLink>
         </li>
