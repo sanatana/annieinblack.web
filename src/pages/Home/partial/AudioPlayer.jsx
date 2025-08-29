@@ -176,6 +176,11 @@ const AudioPlayer = ({ tracks = [], onSongPlay, onSongStop }) => {
 
     // Clicking the current track toggles play/pause
     if (i === index) {
+      if (isPlaying) {
+        onSongStop();
+      } else {
+        onSongPlay(tracks[i]);
+      }
       isPlaying ? a.pause() : a.play().catch(() => {});
       setIsPlaying(p => !p);
       return false;
@@ -184,7 +189,7 @@ const AudioPlayer = ({ tracks = [], onSongPlay, onSongStop }) => {
     // Switch track and play immediately
     setIndex(i);
     return true;
-  }, [index, isPlaying]);
+  }, [index, isPlaying, onSongPlay, tracks, onSongStop]);
 
   useEffect(() => {
     const a = audioRef.current;
