@@ -38,9 +38,9 @@ const Goddess = () => {
       A lovely flower never truly dies.
 
       <div className="dedication dedication-bottom">
-        To Vesna — my high school sweetheart, my first love, my first kiss.
-        You left us too soon, yet you’ll always be in my heart, in my memories, in poems and songs,
-        and in my dreams where I still whisper the words left unsaid.
+        To Vesna — my high school sweetheart, my first love and my first kiss. You left too soon... you’ll always live
+        in my heart, in my memories, in poems and songs... and in my dreams where I still whisper the words that were left
+        unsaid.
 
         <small>
           ** Vesna is the Slavic goddess of spring, youth, fertility,
@@ -49,7 +49,7 @@ const Goddess = () => {
 
         <ul>
           <li className="dedication-list__title">
-            In memory of Vesna and other friends we&apos;ve lost:
+            Other works in memory of Vesna and other friends we&apos;ve lost:
           </li>
           <li>
             <InternalLink to={ `/our-music/hollow/i-remember` }>I remember</InternalLink>

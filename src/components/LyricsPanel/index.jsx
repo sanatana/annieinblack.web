@@ -1,14 +1,8 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 import './lyrics-panel.scss';
 
 const LyricsPanel = ({ close = () => null, slug, children }) => {
-  const panelRef = useRef(null);
-
-  const handleClose = useCallback(() => {
-
-  }, [close, slug]);
-
   useEffect(() => {
     if (slug) {
       document.body.classList.add('no-scroll');
@@ -23,13 +17,13 @@ const LyricsPanel = ({ close = () => null, slug, children }) => {
 
   if (!slug) {
     return (
-      <div className="lyrics-panel" ref={ panelRef } />
+      <div className="lyrics-panel" />
     );
   }
 
   return (
     <>
-      <div className="lyrics-panel lyrics-panel--open" ref={ panelRef }>
+      <div className="lyrics-panel lyrics-panel--open">
         <button
           className="lyrics-panel__close"
           onClick={ close }>X
@@ -41,7 +35,7 @@ const LyricsPanel = ({ close = () => null, slug, children }) => {
           </div>
         </div>
       </div>
-      <button className="lyrics-panel__overlay" onClick={ handleClose }></button>
+      <button className="lyrics-panel__overlay" aria-label="Close" onClick={ close }></button>
     </>
   );
 };

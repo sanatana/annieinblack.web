@@ -20,7 +20,7 @@ const Songs = ({ slug }) => {
           <Authors/>
           <Copy/>
           <div className="dedication">
-            For Vesna, Sergej, Uros, Silvia, John C. and all the friends we’ve lost on this journey.
+            For Vesna, Sergei, Uros, Silvia, John C., Malcolm C. and all the friends we’ve lost on this journey.
             Though your voices are silent, your presence remains in every note, every line, and every
             echo of this song.
           </div>
@@ -334,7 +334,7 @@ const Songs = ({ slug }) => {
       );
     }
 
-    case 'echos-of-your-name': {
+    case 'echoes-of-your-name': {
       return (
         <div>
           <strong>Echoes of your name</strong>
@@ -462,7 +462,7 @@ const Songs = ({ slug }) => {
           <Authors/>
           <Copy/>
 
-          <em className="dedication">For Sergej, whose voice still echoes in our hearts. Safe travels, and
+          <em className="dedication">For Sergei, whose voice still echoes in our hearts. Safe travels, and
             Godspeed.</em>
 
           Listening to the sounds of the pouring rain<br/>
