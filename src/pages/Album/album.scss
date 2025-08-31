@@ -14,38 +14,7 @@ $panel-background: #2b2b2b;
       display: flex;
       justify-content: center;
       background-color: #2b2b2b !important;
-      box-shadow: -30px -38px 20px 0px #2b2b2b;
-    }
-
-    &-panel {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      background-color: $panel-background !important;
-      z-index: 10;
-      right: -100%;
-      overflow-y: scroll;
-      width: 65vw;
-      color: variables.$text-color;
-      padding: 0px;
-      padding-bottom: 0;
-      transition: right 0.5s ease-in-out, width 0.25s ease-in-out;
-      border-left: 1px solid rgba(255 255 255 / 25%);
-
-      @media (prefers-color-scheme: dark) {
-        background-color: $panel-background !important;
-      }
-
-      & {
-        @include responsive.max-width(700) {
-          width: 95%;
-        }
-      }
-
-      &--show {
-        transition: right 1s ease-in-out;
-        right: 0;
-      }
+      box-shadow: -0px -20px 20px 0px #2b2b2b;
 
       .rhap_additional-controls {
         opacity: 0 !important;
@@ -59,7 +28,7 @@ $panel-background: #2b2b2b;
       .rhap_container {
         background-color: #0c0c0c;
         border-radius: 8px;
-        max-width: 500px;
+        max-width: 400px;
 
         * {
           color: #fff;
@@ -69,111 +38,11 @@ $panel-background: #2b2b2b;
           max-width: 80vw;
         }
       }
+    }
 
-      &-close {
-        position: fixed;
-        right: 28px;
-        top: 12px;
-        border-radius: 50%;
-        padding: 5px;
-        border: 2px solid #fff;
-        background-color: #181818;
-        color: #fff;
-        display: inline-flex;
-        width: 30px;
-        height: 30px;
-        align-items: center;
-        justify-content: center;
-        z-index: 20;
-      }
-
-      &-overlay {
-        position: fixed;
-        top:0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        z-index: 9;
-        background-color: rgba(0 0 0 / 70%);
-        cursor: unset !important;
-      }
-
+    &-panel {
       &-text {
-        font-size: 1.6rem;
-        line-height: 1.5;
-        position: relative;
-        -webkit-user-select: none; /* Safari */
-        -ms-user-select: none; /* IE 10 and IE 11 */
-        user-select: none; /* Standard syntax */
-        padding-bottom: 5rem;
-
-        &:after {
-          content: "";
-          background-image: url("/assets/images/annie-in-black.png");
-          background-position: top left;
-          background-repeat: no-repeat;
-          position: absolute;
-          width: 444px;
-          height: 95px;
-          top: 470px;
-          right: 30px;
-          transform: rotate(90deg);
-          transform-origin: top right;
-          z-index: 1;
-          opacity: 0.1;
-        }
-
-        &:before {
-          content: '';
-          display: unset;
-          position: absolute;
-          top:0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: rgba(0 0 0 / 0%);
-        }
-
-        .author {
-          font-size: 1.3rem;
-          display: block;
-          padding-bottom: 1rem;
-        }
-
-        .copy {
-          font-size: 1.4rem;
-          display: block;
-          padding-bottom: 2rem;
-          opacity: 0.75;
-        }
-
-        .dedication {
-          display: block;
-          margin-bottom: 3rem;
-          font-style: italic;
-          position: relative;
-          padding-left: 4rem;
-          max-width: 600px;
-
-          &:before {
-            position: absolute;
-            display: inline-block;
-            content: "“";
-            font-size: 6rem;
-            font-family: "Georgia", "Book Antiqua", "Times New Roman";
-            top: -10px;
-            line-height: 1;
-            left: 10px;
-            opacity: 0.5;
-          }
-        }
-
-        strong {
-          display: block;
-          margin-top: 1rem;
-          margin-bottom: 1rem;
-          font-size: 2.4rem;
-        }
+        padding-bottom: 3rem;
       }
 
       &-nav {

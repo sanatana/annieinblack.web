@@ -12,6 +12,10 @@ const Authors = () => {
 
 const Songs = ({ slug }) => {
 
+  if (!slug) {
+    return null;
+  }
+
   switch (slug) {
     case 'i-remember':
       return (
@@ -111,7 +115,7 @@ const Songs = ({ slug }) => {
     case 'you-were-never-there': {
       return (
         <div>
-          <strong>You were never here</strong>
+          <strong>You were never there</strong>
           <Authors/>
           <Copy/>
           hmmm... hmmm... mmm...<br/>

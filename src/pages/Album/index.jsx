@@ -1,6 +1,6 @@
 import { useCallback , useEffect, useRef } from 'react';
 import setPageTitle from '@src/helpers/html/set_page_title';
-import { Video } from '@src/components';
+import { LyricsPanel, Video } from '@src/components';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 
@@ -61,7 +61,7 @@ const SongList = () => {
   }, [navigate]);
 
   return (
-    <div>
+    <aside>
       <ul className="album__list">
         {
           trackList.map((track, index) => (
@@ -110,7 +110,7 @@ const SongList = () => {
             href="https://annieinblack.bandcamp.com/album/hollow">BandCamp</a>
         </div>
       </div>
-    </div>
+    </aside>
   );
 };
 
@@ -173,14 +173,6 @@ const FaVolumeMute = () => {
   return (<img src={ iconMute } alt="Mute" />);
 };
 
-function formatTime(sec) {
-  if (!Number.isFinite(sec)) { return '0:00'; }
-  const s = Math.max(0, Math.floor(sec));
-  const m = Math.floor(s / 60);
-  const r = s % 60;
-  return `${m}:${r < 10 ? '0' : ''}${r}`;
-}
-
 const removePreview = (title) => {
   return title.replace(/\(Preview\)/i, '').trim();
 };
@@ -205,7 +197,7 @@ const LyricsAndPlayer = () => {
     if (play) {
       url = `${url}/play`;
     }
-    navigate(url);
+    navigate(url, { state: { noScroll: true }, replace: true });
   }, [data.index, navigate, play]);
 
   const prev = useCallback(() => {
@@ -214,7 +206,7 @@ const LyricsAndPlayer = () => {
     if (play) {
       url = `${url}/play`;
     }
-    navigate(url);
+    navigate(url, { state: { noScroll: true }, replace: true });
   }, [data.index, navigate, play]);
 
   const volumeChange = useCallback((e) => {
@@ -233,41 +225,6 @@ const LyricsAndPlayer = () => {
   }, [navigate]);
 
   useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.which === keyboard.KEYS.ESCAPE) {
-        close();
-      }
-    };
-
-    window.removeEventListener('keyup', handleKeyDown);
-    window.addEventListener('keyup', handleKeyDown);
-
-    return () => {
-      window.removeEventListener('keyup', handleKeyDown);
-    };
-  }, [close]);
-
-  useEffect(() => {
-    if (show) {
-      document.body.classList.add('no-scroll');
-      setTimeout(() => {
-        if (panelRef.current) {
-          panelRef.current.classList.add('album__lyrics-panel--show');
-        }
-      }, 100);
-    } else {
-      document.body.classList.remove('no-scroll');
-      if (panelRef.current) {
-        panelRef.current.classList.remove('album__lyrics-panel--show');
-      }
-    }
-
-    return () => {
-      document.body.classList.remove('no-scroll');
-    };
-  }, [show]);
-
-  useEffect(() => {
     if (show && data.slug && data.title) {
       setPageTitle(`Song: ${data.title} by Annie in Black`, `${data.title} by Annie in Black from album Hollow`, `/our-music/hollow/${data.slug}`);
     } else {
@@ -275,29 +232,18 @@ const LyricsAndPlayer = () => {
     }
   }, [data.slug, data.title, show]);
 
-  if (!show) {
-    return null;
-  }
-
   return (
-    <>
-      <div className="album__lyrics-panel" ref={ panelRef }>
-        <button
-          className="album__lyrics-panel-close"
-          onClick={ close }>X
-        </button>
+    <LyricsPanel slug={ data?.slug } close={ close }>
+      <div className="album__lyrics-panel-nav">
+        { data.index > 0 ? (<button onClick={ prev }>Previous</button>) : (<span>Previous</span>) }
+        { data.index < 14 ? (<button onClick={ next }>Next</button>) : (<span>Next</span>) }
+      </div>
 
-        <div className="album__lyrics-panel-inner">
-          <div className="album__lyrics-panel-nav">
-            { data.index > 0 ? (<button onClick={ prev }>Previous</button>) : (<span>Previous</span>) }
-            { data.index < 14 ? (<button onClick={ next }>Next</button>) : (<span>Next</span>) }
-          </div>
+      <div className="album__lyrics-panel-text">
+        <Songs slug={ data?.slug }/>
+      </div>
 
-          <div className="album__lyrics-panel-text">
-            <Songs slug={ data.slug }/>
-          </div>
-        </div>
-
+      { data?.slug && (
         <div className="album__lyrics-player">
           <AudioPlayer
             autoPlay={ play === true }
@@ -328,9 +274,8 @@ const LyricsAndPlayer = () => {
             }}
           />
         </div>
-      </div>
-      <button className="album__lyrics-panel-overlay" onClick={ close }></button>
-    </>
+      ) }
+    </LyricsPanel>
   );
 };
 

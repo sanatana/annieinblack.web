@@ -3,6 +3,11 @@
 @use "../../assets/scss/responsive" as responsive;
 
 .home-page {
+
+  .lyrics-panel__text {
+    padding-bottom: 3rem;
+  }
+
   &__hero {
     position: relative;
     height: 90vh;
