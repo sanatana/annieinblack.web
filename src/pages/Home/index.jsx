@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setTempUtilValue } from '@src/redux/slices/utils/actions';
 
 import './home_page.scss';
+import YouTubeVideo from '@src/components/YouTubeVideo';
 
 const Songs = Loadable(lazy(() => import('@src/pages/Album/hollow/Songs')));
 
@@ -35,11 +36,11 @@ const PageTitle = () => {
 const HomeHeader = () => {
   return (
     <section className="home-page__hero">
-      <Video />
+      <Video/>
 
       <div className="home-page__hero-content">
         <h1>Annie in Black</h1>
-        <img src={ AnnieInBlack } alt="Annie In Black" />
+        <img src={ AnnieInBlack } alt="Annie In Black"/>
         <p>soundtracks of loss, sorrow and regrets - dark, honest &amp; true</p>
       </div>
     </section>
@@ -55,7 +56,7 @@ const Lyrics = () => {
   }, [dispatch]);
 
   return (
-    <LyricsPanel slug={ openLyrics?.slug } close={ close } >
+    <LyricsPanel slug={ openLyrics?.slug } close={ close }>
       <Songs slug={ openLyrics?.slug }/>
     </LyricsPanel>
   );
@@ -80,7 +81,7 @@ const SongPlayingIndicator = () => {
           <button>lyrics</button>
         </div>
 
-        <div className="waveform" />
+        <div className="waveform"/>
       </div>
     );
   }
@@ -95,7 +96,7 @@ const SongPlayingIndicator = () => {
 
         <button onClick={ () => showLyrics(songPlaying) }>Show lyrics</button>
       </div>
-      <WaveForm />
+      <WaveForm/>
     </div>
   );
 };
@@ -116,39 +117,90 @@ const NewRelease = () => {
       <p>August 22nd, 2025</p>
       <p className="new-release__intro">
         <b>Hollow</b> is a 15-track journey through isolation, loss, sorrow, and resilience.
-        From sleepless nights and haunting memories to raw reflections on loss, grief, war and struggles too heavy to carry.
+        From sleepless nights and haunting memories to raw reflections on loss, grief, war and struggles too heavy to
+        carry.
         Hollow blends dark honesty with atmospheric guitars and powerful vocals.
-        Songs that echo pain, but still somehow search for meaning in the dark.<br />
+        Songs that echo pain, but still somehow search for meaning in the dark.<br/>
 
         <InternalLink to={ `/our-music/hollow` }>Behind Hollow + lyrics</InternalLink>
       </p>
       <article>
-        <img className="cover" src="/assets/images/annie-in-black-hollow.jpg" alt="Annie In Black - Hollow" />
+        <img className="cover" src="/assets/images/annie-in-black-hollow.jpg" alt="Annie In Black - Hollow"/>
 
         <div className="new-release__play-list">
-          <AudioPlayer tracks={ hollowTracks } onSongPlay={ onSongPlay } onSongStop={ onSongStop } />
+          <AudioPlayer tracks={ hollowTracks } onSongPlay={ onSongPlay } onSongStop={ onSongStop }/>
         </div>
       </article>
 
       <div className="new-release__links-wrapper">
         <p>Now available on:</p>
         <div className="new-release__links">
-          <a onClick={ trackExternalLink } target="_blank" rel="nofollow noopener noreferrer" href="https://open.spotify.com/album/0l4vbw7bPxNVOwUyx2RaRL">Spotify</a>
-          <a onClick={ trackExternalLink } target="_blank" rel="nofollow noopener noreferrer" href="https://www.amazon.com/dp/B0FN5DXJJ2">Amazon</a>
-          <a onClick={ trackExternalLink } target="_blank" rel="nofollow noopener noreferrer" href="https://itunes.apple.com/album/id1834542160?ls=1&app=itunes">iTunes</a>
-          <a onClick={ trackExternalLink } target="_blank" rel="nofollow noopener noreferrer" href="https://music.youtube.com/watch?v=AnpA--zGgT4&list=OLAK5uy_mQSyoPMgglQXTsafZ951L1ufkxpxJkq08">YouTube music</a>
-          <a onClick={ trackExternalLink } target="_blank" rel="nofollow noopener noreferrer" href="https://annieinblack.bandcamp.com/album/hollow">BandCamp</a>
+          <a onClick={ trackExternalLink } target="_blank" rel="nofollow noopener noreferrer"
+            href="https://open.spotify.com/album/0l4vbw7bPxNVOwUyx2RaRL">Spotify</a>
+          <a onClick={ trackExternalLink } target="_blank" rel="nofollow noopener noreferrer"
+            href="https://www.amazon.com/dp/B0FN5DXJJ2">Amazon</a>
+          <a onClick={ trackExternalLink } target="_blank" rel="nofollow noopener noreferrer"
+            href="https://itunes.apple.com/album/id1834542160?ls=1&app=itunes">iTunes</a>
+          <a onClick={ trackExternalLink } target="_blank" rel="nofollow noopener noreferrer"
+            href="https://music.youtube.com/watch?v=AnpA--zGgT4&list=OLAK5uy_mQSyoPMgglQXTsafZ951L1ufkxpxJkq08">YouTube
+            music</a>
+          <a onClick={ trackExternalLink } target="_blank" rel="nofollow noopener noreferrer"
+            href="https://annieinblack.bandcamp.com/album/hollow">BandCamp</a>
+          <a
+            onClick={ trackExternalLink }
+            target="_blank" rel="nofollow noopener noreferrer"
+            href="https://tidal.com/album/455294880"
+          >
+            Tidal
+          </a>
         </div>
       </div>
     </section>
   );
 };
 
+const IRemember = () => {
+  const onEvent = useCallback((eventName, properties) => {
+
+    if (eventName === 'Play') {
+      { trackEvent(`Video`, `${eventName}`, properties.title); }
+    }
+
+    if (eventName === 'Complete') {
+      { trackEvent(`Video`, `${eventName}`, properties.title); }
+    }
+
+  }, []);
+
+  return (
+    <section className="new-release__video">
+      <h2>Video</h2>
+      <p className="new-release__video-description">
+        “<strong>I Remember</strong>” is the opening track from Hollow.
+        This song and video are a tribute to friends and loved ones we’ve lost - a token of appreciation
+        and remembrance for their voices, the silence they left behind, and the grief that never truly fades.
+      </p>
+
+      <YouTubeVideo
+        title="I remember by Annie in Black"
+        videoId="QSLscmzLzNI"
+        onEvent={ onEvent }
+      />
+
+      <p className="new-release__video-legal">
+        ** Our site uses YouTube’s privacy-enhanced embed service (youtube-nocookie.com).
+        Videos are not loaded until you press play.
+        No cookies are set or stored by YouTube as part of this integration.
+      </p>
+    </section>
+  );
+};
 const HomePageContent = () => {
 
   return (
     <div className="home-page__content">
-      <NewRelease />
+      <NewRelease/>
+      <IRemember/>
     </div>
   );
 };
@@ -158,8 +210,8 @@ const HomePage = () => {
     <div className="home-page">
       <PageTitle/>
       <HomeHeader/>
-      <HomePageContent />
-      <SongPlayingIndicator />
+      <HomePageContent/>
+      <SongPlayingIndicator/>
       <Lyrics/>
     </div>
   );

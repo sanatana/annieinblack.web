@@ -24,9 +24,8 @@ const Songs = ({ slug }) => {
           <Authors/>
           <Copy/>
           <div className="dedication">
-            For Vesna, Sergei, Uros, Silvia, John C., Malcolm C. and all the friends we’ve lost on this journey.
-            Though your voices are silent, your presence remains in every note, every line, and every
-            echo of this song.
+            For Vesna, Sergei, Uros, Silvia, John C., Malcolm C., and all the loved ones and friends we’ve lost on our journey.
+            Though your voices are silent, your presence lingers in every note, every line, and every echo of this song.
           </div>
 
           I still remember the way you smiled<br/>

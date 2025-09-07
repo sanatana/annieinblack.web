@@ -108,6 +108,14 @@ const SongList = () => {
             onClick={ trackExternalLink }
             target="_blank" rel="nofollow noopener noreferrer"
             href="https://annieinblack.bandcamp.com/album/hollow">BandCamp</a>
+
+          <a
+            onClick={ trackExternalLink }
+            target="_blank" rel="nofollow noopener noreferrer"
+            href="https://tidal.com/album/455294880"
+          >
+            Tidal
+          </a>
         </div>
       </div>
     </aside>
