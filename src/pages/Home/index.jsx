@@ -177,8 +177,8 @@ const IRemember = () => {
       <h2>Video</h2>
       <p className="new-release__video-description">
         “<strong>I Remember</strong>” is the opening track from Hollow.
-        This song and video are a tribute to friends and loved ones we’ve lost - a token of appreciation
-        and remembrance for their voices, the silence they left behind, and the grief that never truly fades.
+        This song and video are a tribute to friends and loved ones we’ve lost — a token of appreciation and remembrance
+        for the memories we shared, the silence they left behind, and the grief that never truly fades.
       </p>
 
       <YouTubeVideo
