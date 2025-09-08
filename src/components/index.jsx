@@ -11,3 +11,4 @@ export { default as Video } from './Video';
 export { default as WaveForm } from './WaveForm';
 export { default as LyricsPanel } from './LyricsPanel';
 export { default as Hero } from './Hero';
+export { default as JsonSongSchema } from './JsonSongSchema';

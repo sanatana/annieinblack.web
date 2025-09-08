@@ -35,14 +35,34 @@ const PageTitle = () => {
   return null;
 };
 
+const PageHeaderText = () => {
+
+  const { show, data } = useSelector((state) => state.song);
+
+  if (data?.title && show) {
+    return (
+      <>
+        <h1 className="h1__title">Our songs - { data.title }</h1>
+        <h2>Song by Annie in Black</h2>
+      </>);
+  }
+
+  return (
+    <>
+      <h1 className="h1__title">Our Music - Hollow</h1>
+      <h2>Symphony of sorrow my endless refrain...</h2>
+    </>
+  );
+};
+
 const PageHeader = () => {
   return (
     <section className="album__hero">
       <Video/>
       <div className="album__hero-content">
-        <h1 className="h1__title">Our Music - Hollow</h1>
-        <h2>Symphony of sorrow my endless refrain...</h2>
+        <PageHeaderText/>
       </div>
+
     </section>
   );
 };
@@ -248,7 +268,7 @@ const LyricsAndPlayer = () => {
       </div>
 
       <div className="album__lyrics-panel-text">
-        <Songs slug={ data?.slug }/>
+        <Songs slug={ data?.slug } addSchema />
       </div>
 
       { data?.slug && (

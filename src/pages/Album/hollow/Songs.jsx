@@ -1,3 +1,5 @@
+import { JsonSongSchema } from '@src/components';
+
 const Copy = () => {
   return (
     <div className="copy">&copy; 2025 Annie in Black</div>
@@ -10,7 +12,7 @@ const Authors = () => {
   );
 };
 
-const Songs = ({ slug }) => {
+const Songs = ({ slug, addSchema = false }) => {
 
   if (!slug) {
     return null;
@@ -63,6 +65,49 @@ const Songs = ({ slug }) => {
           but in my dreams... you live on<br/><br/>
 
           You live on.
+
+          { addSchema && (
+            <JsonSongSchema
+              lyricist="Sebastjan Stadler"
+              ytId="QSLscmzLzNI"
+              title="I remember"
+              lyrics={
+                `I still remember the way you smiled
+All those moments now lost to time
+Everything we had, seemed like a dream
+Shattered by the pain and the tears I've cried
+
+Time may pass, and seasons may change
+Yet echoes linger, and deep pain remains
+Through the days and long sleepless nights
+Shattered by the pain, I still call your name
+ 
+Storms may come, and stars may wane
+and through it all, I still remember you
+All those days might long be gone
+but in my dreams, in my dreams you live on
+
+Time may pass, but the memories remain
+Even though you're gone, I hold on to the pain
+In the quiet moments, in dead of night
+In dark shadows, I still see you smile
+
+Even though you're gone, in heavens above
+years may pass, yet you're still in my heart
+A symphony of sorrow - my endless refrain
+for I'm left behind alone with this pain
+
+...and through it all, I still remember you
+All those days might long be gone
+but in my dreams... you live on!!!
+
+Storms may come, and stars may wane
+and through it all, I still remember you
+All those days might long be gone
+but in my dreams... you live on
+
+You live on` }
+            />      ) }
         </div>
       );
 
@@ -72,7 +117,6 @@ const Songs = ({ slug }) => {
           <strong>Hollow</strong>
           <Authors/>
           <Copy/>
-
           When I lay my head to rest<br/>
           Deep whisper calls my name<br/>
           A hollow voice inside my head<br/>
@@ -788,6 +832,66 @@ const Songs = ({ slug }) => {
           ...just a whisper in the storm<br/>
           I&apos;m still here... I&apos;m still here<br/>
           while the world moved on
+
+          { addSchema && (
+            <JsonSongSchema
+              lyricist="Sebastjan Stadler"
+              ytId="mnWkCATH6-g"
+              title="Whisper in the storm"
+              lyrics={
+                `Standing on the edge, no one's around
+Waves below, a sweet end I dreamed about
+A gentle whisper inside my head
+No more sorrow... no regrets
+
+I stand alone.... I hold my screams
+Stuck in the same never-ending dreams
+I bleed my thoughts I left unsaid
+Each day paints a new shade of pain
+
+Thoughts I bury... thoughts I hide...
+come tearing through me every night
+
+I'm a whisper in the storm
+Still playing the same old song
+I hide the pain behind the smile
+Where the sun never shines
+A whisper in the storm
+I’m still here... I'm still here
+While the world moved on
+
+I've walked past cliffs, I’ve watched the waves
+Counted seconds, tested fate
+I held my breath, I bit my tongue
+To keep control before the final fall
+
+I'm stuck with memories I can’t forget
+Turning ghosts to words of sorrow and regret
+Born from the pain... my escape
+A fight I wage with all I've left unsaid
+
+I'm a whisper in the storm
+Still playing the same old song
+I hide the pain behind the smile
+Where the sun never shines
+A whisper in the storm
+I'm still here... I'm still here 
+While the world moved on
+
+I'm a whisper in the storm
+Still playing the same old song
+I hide a face behind a smile
+Where the sun never shines
+A whisper in the storm
+I'm still here... I'm still here... 
+While the world moved on
+
+...just a whisper in the storm
+I'm still here... I'm still here
+while the world moved on`
+              }
+            />
+          ) }
         </div>
       );
     }
