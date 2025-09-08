@@ -1,16 +1,16 @@
 services:
-  web-app-reviews:
-    image: web-app-reviews
-    container_name: web-app-reviews
+  annie-in-black-web:
     build:
-      context: .
       dockerfile: ./docker/Dockerfile
+      context: .
+      args:
+        APP_ENV: production
+    image: annie-in-black-web:local
+    container_name: annie-in-black-web
+    env_file:
+      - .env
     ports:
-      - "8083:80"
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "curl", "-fs", "http://localhost/status/health/status.json"]
-      interval: 5s
-      timeout: 10s
-      retries: 5
-      start_period: 5s  # Optional: wait 5s before first check
+      - "8080:80"
+    # mount only if you want to hot-swap .htaccess while testing
+    # volumes:
+    #   - ./htaccess.dev:/usr/local/apache2/htdocs/.htaccess:ro

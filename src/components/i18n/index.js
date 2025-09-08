@@ -25,8 +25,8 @@ i18n
       loadPath: '/languages/{{lng}}/{{ns}}.json',
       queryStringParams: { v: process.env.REACT_APP_DEPLOYMENT_VERSION || '1.0.0' },
     },
-    ns: ['common', 'reviews'], // Ensure namespace exists in translation files
-    defaultNS: 'common',
+    ns: [], // Ensure namespace exists in translation files
+    defaultNS: null,
     interpolation: {
       escapeValue: false,
     },

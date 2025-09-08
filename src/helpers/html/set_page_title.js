@@ -4,7 +4,7 @@ const getCleanText = (text) => {
   let finalText = text;
   try {
     const textArea = document.createElement('textarea');
-    textArea.innerHTML = text;
+    textArea.textContent = text;
     finalText = (textArea.value || '').trim();
   } catch {
     // ignore

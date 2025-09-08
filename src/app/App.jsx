@@ -3,7 +3,6 @@ import { useRoutes } from 'react-router-dom';
 import Store from '../redux/Store';
 import { injectStore } from '../helpers/axios';
 import routes from '../routes';
-import ToastComponentStacked from '../components/StackedToast';
 
 import ErrorBoundary from '@src/components/ErrorBoundary';
 import ScrollTracker from '@src/components/ScrollTracker';
@@ -20,7 +19,6 @@ const App = () => {
       <ScrollTracker />
       <ErrorBoundary>
         { content }
-        <ToastComponentStacked />
       </ErrorBoundary>
     </Provider>
   );

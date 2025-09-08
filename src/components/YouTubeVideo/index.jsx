@@ -25,7 +25,6 @@ export default function YouTubePrivacyTracked({
 
   const [visible, setVisible] = useState(false);   // poster becomes visible near viewport
   const [loaded, setLoaded] = useState(false);     // iframe injected
-  const [remember, setRemember] = useState(false); // you’re not exposing a UI for this now
 
   const wrapperRef = useRef(null);
   const iframeRef = useRef(null);
@@ -44,14 +43,27 @@ export default function YouTubePrivacyTracked({
 
   const pageOrigin = typeof window !== 'undefined' ? window.location.origin : '';
 
-  // ---- Storage helpers (kept; you’re not exposing a remember UI right now)
-  const storageGet = useCallback(() => {
-    try { const raw = localStorage.getItem(storageKey); return raw ? JSON.parse(raw) : {}; } catch { return {}; }
-  }, [storageKey]);
+  const pauseOtherIframes = useCallback((currentVideoId) => {
+    const self = iframeRef.current;
+    if (!self) { return; }
 
-  const storageSet = useCallback((obj) => {
-    try { localStorage.setItem(storageKey, JSON.stringify(obj)); } catch {}
-  }, [storageKey]);
+    document.querySelectorAll('iframe.ytp-iframe').forEach((node) => {
+      if (node === self) { return; } // never pause the one that just started
+
+      const nodeVid =
+        node.dataset.videoId ||
+        (typeof node.src === 'string'
+          ? (node.src.match(/\/embed\/([^?]+)/)?.[1] ?? '')
+          : '');
+
+      if (nodeVid === currentVideoId) { return; }
+
+      node.contentWindow?.postMessage(
+        JSON.stringify({ event: 'command', func: 'pauseVideo', args: [] }),
+        ORIGIN_NC
+      );
+    });
+  }, []);
 
   // ---- Tracking
   const track = useCallback((name, props) => {
@@ -83,6 +95,9 @@ export default function YouTubePrivacyTracked({
 
     if (state === PLAYER_STATE.PLAYING) {
       const prev = lastStateRef.current;
+      const wasBuffering = prev === PLAYER_STATE.BUFFERING;
+      const prevEffective = wasBuffering ? prevBeforeBufferingRef.current : prev;
+
       const from = bufferingFromTimeRef.current || 0;
       const to = currentTimeRef.current || 0;
 
@@ -90,33 +105,27 @@ export default function YouTubePrivacyTracked({
       const jumpedByPercent = durationRef.current > 0
         ? Math.abs((to - from) / durationRef.current) >= SEEK_THRESHOLD_PERCENT
         : false;
-      const jumped = prev === PLAYER_STATE.BUFFERING && (jumpedBySeconds || jumpedByPercent);
+      const jumped = wasBuffering && (jumpedBySeconds || jumpedByPercent); // seek during buffering
 
-      const duration = durationRef.current || 0;
-      const nearEnd = duration > 0 && (duration - to) <= END_EPSILON_SECONDS;
+      const nearEnd = (durationRef.current || 0) > 0 &&
+        (durationRef.current - to) <= END_EPSILON_SECONDS;
 
       if (jumped) {
-        // Seek detected: emit Seek, suppress Play/Resume
+        // it was a seek, not a resume: fire Seek, do NOT pause others
         seekJustHappenedRef.current = true;
         seekTargetRef.current = to;
-        track('Seek', {
-          fromSeconds: from,
-          toSeconds: to,
-          delta: to - from,
-          seconds: to,
-          duration: duration || undefined,
-          percent: duration ? (to / duration) * 100 : undefined,
-          whilePaused: prevBeforeBufferingRef.current === PLAYER_STATE.PAUSED
-        });
+        track('Seek', { fromSeconds: from, toSeconds: to, delta: to - from });
       } else if (!hasStartedRef.current) {
-        // First actual play
+        // first real play
         hasStartedRef.current = true;
-        track('Play', { state, ...p });
-      } else if (prev === PLAYER_STATE.PAUSED) {
-        // Resume only from a pause (not from buffering)
-        track('Resume', { state, ...p });
-      } else if (nearEnd) {
-        // Ignore accidental PLAYING blips right before end
+        track('Play', { seconds: to });
+        pauseOtherIframes(videoId); // pause other embeds here
+      } else if (prevEffective === PLAYER_STATE.PAUSED) {
+        // real resume (paused → buffering → playing)
+        track('Resume', { seconds: to });
+        pauseOtherIframes(videoId); // pause other embeds here
+      } else if (!nearEnd) {
+        // ignore transient PLAYING blips
       }
     } else if (state === PLAYER_STATE.PAUSED) {
       if (hasStartedRef.current) { track('Pause', { state, ...p }); }
@@ -134,7 +143,7 @@ export default function YouTubePrivacyTracked({
     }
 
     lastStateRef.current = state;
-  }, [emitProgress, track]);
+  }, [emitProgress, pauseOtherIframes, track, videoId]);
 
   // ---- Messaging with the iframe
   const post = useCallback((func, args = []) => {
@@ -145,6 +154,11 @@ export default function YouTubePrivacyTracked({
 
   const handleMessage = useCallback((e) => {
     if (!iframeRef.current) { return; }
+    if (!ALLOWED_ORIGINS.has(e.origin)) { return; }
+
+    if (!iframeRef.current) { return; }
+    // CRITICAL: ignore messages not from *this* iframe
+    if (e.source !== iframeRef.current.contentWindow) { return; }
     if (!ALLOWED_ORIGINS.has(e.origin)) { return; }
 
     let data;
@@ -226,12 +240,8 @@ export default function YouTubePrivacyTracked({
 
   // ---- Handlers
   const handleClickLoad = useCallback(() => {
-    if (remember) {
-      const saved = storageGet();
-      storageSet({ ...saved, [videoId]: true });
-    }
     setLoaded(true);
-  }, [remember, storageGet, storageSet, videoId]);
+  }, []);
 
   const src = useMemo(() => {
     if (!loaded) { return ''; }
@@ -268,6 +278,7 @@ export default function YouTubePrivacyTracked({
           )
         ) : (
           <iframe
+            data-video-id={ videoId }
             ref={ iframeRef }
             className="ytp-iframe"
             title={ title }

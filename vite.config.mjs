@@ -21,6 +21,32 @@ process.env.VITE_MATERIAL_ICONS = iconsArray.join(',');
 import poems from './src/data/poetry';
 import songsHollow from './src/data/hollow';
 
+const fixDeprecatedMobileAppMeta = () => {
+  return {
+    name: 'fix-deprecated-mobile-app-meta',
+    apply: 'build',
+    enforce: 'post', // run after other HTML injectors
+    transformIndexHtml(html) {
+      // Remove any apple-mobile-web-app-capable tags injected by other tools
+      const cleaned = html.replace(
+        /<meta\s+name=["']apple-mobile-web-app-capable["'][^>]*>\s*/gi,
+        ''
+      );
+
+      // Ensure we have the modern Android/Chrome variant (optional)
+      const alreadyHasModern =
+        /<meta\s+name=["']mobile-web-app-capable["'][^>]*>/i.test(cleaned);
+
+      return alreadyHasModern
+        ? cleaned
+        : cleaned.replace(
+          /<\/head>/i,
+          `  <meta name="mobile-web-app-capable" content="yes">\n</head>`
+        );
+    },
+  };
+}
+
 const health = () => {
   const required = [
     'REACT_APP_APPLICATION_NAME',
@@ -269,6 +295,7 @@ export default defineConfig({
     // viteCompression(),
     legacy(),
     generateVersionFilePlugin(),
+    fixDeprecatedMobileAppMeta(),
     finalizeBuild(),
   ],
   optimizeDeps: {

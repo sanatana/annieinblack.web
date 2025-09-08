@@ -159,7 +159,7 @@ const NewRelease = () => {
   );
 };
 
-const IRemember = () => {
+const Videos = () => {
   const onEvent = useCallback((eventName, properties) => {
 
     if (eventName === 'Play') {
@@ -174,7 +174,7 @@ const IRemember = () => {
 
   return (
     <section className="new-release__video">
-      <h2>Video</h2>
+      <h2>Videos</h2>
       <p className="new-release__video-description">
         “<strong>I Remember</strong>” is the opening track from Hollow.
         This song and video are a tribute to friends and loved ones we’ve lost — a token of appreciation and remembrance
@@ -182,8 +182,22 @@ const IRemember = () => {
       </p>
 
       <YouTubeVideo
-        title="I remember by Annie in Black"
+        title="I remember"
         videoId="QSLscmzLzNI"
+        posterUrl="/assets/posters/i-remember.jpg"
+        onEvent={ onEvent }
+      />
+
+      <p className="new-release__video-description new-release__video-description-n">
+        “<strong>Whisper in the Storm</strong>” captures the quiet battles we fight in silence — the weight of grief,
+        the voices that linger, and the struggle of carrying what others can’t see. It’s both a tribute to those
+        we’ve lost and a reminder that even in the darkest moments, no one should have to face the storms alone.
+      </p>
+
+      <YouTubeVideo
+        title="Whisper in the storm"
+        videoId="mnWkCATH6-g"
+        posterUrl="/assets/posters/whisper-in-the-storm.jpg"
         onEvent={ onEvent }
       />
 
@@ -200,7 +214,7 @@ const HomePageContent = () => {
   return (
     <div className="home-page__content">
       <NewRelease/>
-      <IRemember/>
+      <Videos/>
     </div>
   );
 };

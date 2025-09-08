@@ -7,8 +7,8 @@ i18n.use(initReactI18next).init({
   lng: 'en-GB',
   fallbackLng: 'en-GB',
   supportedLngs: ['en-GB'],
-  defaultNS: 'common',
-  ns: ['common', 'reviews', 'company'],
+  defaultNS: null,
+  ns: [],
   resources: {
     'en-GB': {
       ...translations,

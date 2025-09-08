@@ -151,6 +151,49 @@ You live on` }
           <br/>
           And still, night may call me to the deep...<br/>
           I rise again... in a prison of memories and pain
+
+          { addSchema && (
+            <JsonSongSchema
+              lyricist="Sebastjan Stadler"
+              ytId="oC8a0tbKaCY"
+              title="Hollow"
+              lyrics={
+                `When I lay my head to rest
+Deep whisper calls my name
+A hollow voice inside my head
+Silent screams, I can't escape
+
+I pray the night to set me free
+To silence echoes calling me
+Ghosts drag me further to the deep
+To a prison of memories and pain
+
+A prison of memories and pain
+
+The silence sings a hollow tune
+feeding tides of grief within
+Ghosts drag me further to the deep
+To a prison of memories and pain
+
+A prison of memories and pain
+With walls too high to climb
+Echoes call from times long gone
+Yet still, they haunt my mind
+
+The silence sings a hollow tune
+feeding tides of grief within
+Ghosts drag me further to the deep...
+to a prison of memories and pain
+
+The silence sings a hollow tune
+Feeding tides of grief within
+Ghosts drag me further to the deep...
+To a prison of memories and pain
+
+And still, night may call me to the deep...
+I rise again... in a prison of memories and pain` }
+            />
+          ) }
         </div>
       );
     }
@@ -206,6 +249,60 @@ You live on` }
           You were never there...<br/>
           <br/>
           You were never there
+
+          { addSchema && (
+            <JsonSongSchema
+              lyricist="Sebastjan Stadler"
+              ytId="aRP9bqY-Nl0"
+              title="You were never there"
+              lyrics={
+                `hmmm... hmmm...  mmm...
+
+I built my castles on broken dreams
+Learned to walk alone through empty streets
+In the bottle, you found your peace
+While your promises were poured too thin
+
+I stood alone, just a lonely child
+Pretending I didn’t care... somehow
+Still, I kept your pictures close
+But questions... I ask no more
+
+'cause you were never there
+You were never there
+
+No bedtime stories, just broken dreams
+I cried for you with silent screams
+You weren’t there when I needed you most
+Just hollow echoes and empty hope
+
+I used to think it might be me
+Maybe I wasn’t worth your time
+I learned to live without your love
+'Cause you were never there
+
+Now I’m grown, and I understand...
+You never tried.... and now it's too late
+You wonder why... You wonder why I never call
+And though I wish you would’ve cared
+The truth is, you were never there
+you were never there
+you were never there 
+
+I don’t need you to say you're sorry
+Your silence said enough
+I grew to every empty promise
+I cried... but now I'm done
+
+'Cause you were never there
+You were never there
+'Cause you were never there
+You were never there...
+You were never there...
+
+You were never there` }
+            />
+          ) }
         </div>
       );
     }
@@ -251,6 +348,49 @@ You live on` }
           <br/>
           Paper dragons… high in the sky...<br/>
           Torn to pieces as storms roll by<br/>
+
+          { addSchema && (
+            <JsonSongSchema
+              lyricist="Sebastjan Stadler"
+              ytId="E9v1hRxcp_o"
+              title="Paper dragons"
+              lyrics={
+                `Paper dragons... high in the sky
+Children laughing, like all is alright
+A silly game yet it brings them joy
+But I stand… in a place I don't belong
+
+For long I walked alone... I chased my dream
+I held out my hands - with nothing to hold
+Dreams I had were already gone
+just another story that remains untold
+
+Paper dragons... high in the sky
+Each a dream that drifted too far
+Paper dragons... high in the sky
+Torn to pieces as storms roll by
+
+Laughter echoes, soft and far
+Like dreams fading from beneath the stars
+A stupid game, another broken toy
+But somehow, still, it brought them joy
+
+I dreamt of more… I dreamt too long
+Caught in silence, lost in thoughts
+Now all that's left is a broken heart
+Torn to pieces as storms roll by
+
+Paper dragons... high in the sky
+Each one a dream... that drifted too far
+Some never landed, just faded away
+Like names, now lost to time
+
+Torn to pieces as storms roll by
+
+Paper dragons… high in the sky...
+Torn to pieces as storms roll by` }
+            />
+          ) }
         </div>
       );
     }
@@ -310,6 +450,63 @@ You live on` }
           ...and scream all is fine<br/>
           <br/>
           ...Yes, all is fine...
+
+          { addSchema && (
+            <JsonSongSchema
+              lyricist="Sebastjan Stadler"
+              ytId="F7_ggxGBkkY"
+              title="Truth hurts"
+              lyrics={
+                `I walk alone through empty streets
+Chasing shadows I'll never meet
+I'm losing ground beneath my feet
+And I scream...
+Yes, all is fine!
+
+All is fine!
+
+I build a world inside my mind
+Hiding sorrow from the prying eyes
+Skies turn grey, and nights never end
+'cause truth hurts more than lies!
+
+Truth cuts and lies that heal
+I hide the pain that makes it real
+I fake my smile, and I close my eyes
+'cause ghosts don’t talk when you cry
+
+I built a life in an empty space
+I laughed at the silence... I played my part
+All is fine, is what I say...
+'cause truth hurts more than lies
+
+I gave it all... and now, I pretend
+I choke on words I never said
+Buried deep behind the smile
+'cause truth hurts more than lies
+
+Yes all is fine
+
+Truth cuts and lies that heal
+I hide the pain that makes it real
+I fake my smile, and I close my eyes
+'cause ghosts don’t talk when you cry
+
+Truth cuts and lies that heal
+I hide the pain that makes it real
+I fake my smile, and I close my eyes
+'cause ghosts don’t talk when you cry
+
+Yes all is fine
+
+I gave it all! There's no way back
+I hide in dreams I know won’t last
+I wear a smile made from scars...
+...and scream all is fine
+
+...Yes, all is fine...` }
+            />
+          ) }
         </div>
       );
     }
@@ -377,6 +574,72 @@ You live on` }
           Truth meant nothing unless you won<br/>
           <br/>
           Truth meant nothing unless you won
+
+          { addSchema && (
+            <JsonSongSchema
+              lyricist="Sebastjan Stadler"
+              ytId="6lIWox__tqA"
+              title="Glass crown"
+              lyrics={
+                `You wore a smile like a mask,
+Built your throne from shattered glass.
+Told the world how right you were.
+A hollow king behind the lies!
+
+Every story, every boast,
+To you, truth was just a ghost.
+Small deceit in every breath,
+You bled me dry to feel alive!
+
+You built your kingdom on fear.
+Called it love, then fed on my tears!
+
+But I see you now! Your glass crown cracked.
+You called it love, a weak king of lies!
+I bled through your games, but now I'm done!
+Your crown is ash!
+And I’m never going back...
+Never again!
+
+You’d twist the sun, you’d fake the rain,
+Just to feel big inside your game.
+Everyone was just a pawn,
+You played the game from dusk till dawn.
+
+You taught me silence - not respect,
+Just how to bow and be afraid.
+Every word, a loaded gun,
+Truth meant nothing unless you won!
+
+You built your kingdom on fear,
+Called it love, then fed on my tears!
+
+But I see you now! Your glass crown cracked.
+You called it love, a weak king of lies!
+I bled through your games, but now I'm done!
+Your crown is ash!
+And I’m never going back!
+
+You were a shadow dressed as a man,
+coward’s hollow eyes... And a heart full of lies!!!
+I won’t carry your weight, won’t bleed for your pride,
+I’m free from your storms - you've got nothing left!!!
+
+But I see you now! Your glass crown cracked.
+You called it love... a weak king of lies!
+I bled through your games, but now I'm done!
+Your crown is ash!
+And I’m never going back.
+
+And I see you now!! Your glass crown cracked.
+You called it love, but every hit fell like hell!
+Every word... a loaded gun,
+Truth meant nothing unless you won!
+
+Truth meant nothing unless you won!
+` }
+            />
+          ) }
         </div>
       );
     }
@@ -436,6 +699,64 @@ You live on` }
           With ghosts of love we had<br/>
           <br/>
           ...With ghosts of love we had
+
+          { addSchema && (
+            <JsonSongSchema
+              lyricist="Sebastjan Stadler"
+              ytId="U-efk9aVpog"
+              title="Echoes of your name"
+              lyrics={
+                `I saw you standing in the rain
+A smile of hope I couldn't hold
+Watched petals wilt and fade
+Then left without a word
+
+I shut the door before you knocked
+Built walls you couldn’t climb
+You tried to pull me from the edge
+But I felt safer in the dark
+
+You gave me hope, but I let it fade
+Watched your heart break
+While I slipped away
+Now I sleep inside this dream
+With ghosts of love we had
+
+I walk these empty streets
+Dead gardens where love used to grow
+Your name echoes in every step
+I’m still haunted... still alone
+
+Old photos - a stranger’s smile
+Faded love from another time
+Tried to speak, but words just died
+Lost in silence - inside this dream
+
+I want to say I’m sorry
+But the moment’s long since gone
+I talk to you in silence
+Like you were never gone
+
+I walk these empty streets
+dead gardens where love used to grow
+Your name echoes in every step
+I’m still haunted... still alone
+
+You gave me hope... but I let it fade
+Watched your heart break
+While I slipped away
+Now I sleep inside this dream
+With ghosts of love we had
+
+You gave me hope... but I let it fade
+Watched your heart break
+While I slipped away
+Now I sleep inside this dream
+With ghosts of love we had
+
+...With ghosts of love we had` }
+            />
+          ) }
         </div>
       );
     }
@@ -498,6 +819,68 @@ You live on` }
           How many more have to die?<br/>
           <br/>
           Tell me how many more?
+
+          { addSchema && (
+            <JsonSongSchema
+              lyricist="Sebastjan Stadler"
+              ytId="WMbv_pyw1Q8"
+              title="How many more"
+              lyrics={
+                `You draw lines on paper and in dirt
+you ignore where the story ends
+Another name, another face
+Another young life is lost
+
+You scream, you fight
+Blindfolded by the ancient spite
+No one wins in this parade
+Of dead men’s lies you wear with pride
+
+In prayer, you raise your hands...
+Stained by the blood of the innocent
+
+Lay down your guns, your sacred lies
+There's no glory on the other side
+We've all bled, we've been burned
+What have you ever learned
+Tear the veil, count the dead
+tell me how many more
+
+You were told they're not like you
+fed fear like it was something true
+Behind the scars and shattered names
+there's a voice that hurts the same
+
+We bury children, not the lies
+while leaders watch with hollow eyes
+The trigger's quick, but the scars will last
+we bleed for the ghosts that died in the past
+
+You pray with blood-stained hands
+and never stop to understand
+The dead don't care who drew first blood
+They paid the price.... for your holy lies
+
+Lay down your guns, your sacred lies
+There's no glory on the other side
+We've all bled, we've been burned
+What have you ever learned
+Tear the veil, count the dead
+tell me how many more
+
+You pray with blood-stained hands
+and never stop to understand
+The dead don't care who drew first blood
+They paid the price.... for your holy lies
+
+How many more have to die
+While the damned won't break the same old spells
+How many more have to die?
+
+Tell me how many more?
+` }
+            />
+          ) }
         </div>
       );
     }
@@ -548,6 +931,52 @@ You live on` }
           Your footprints are slowly washed away<br/>
           <br/>
           Your footprints are slowly washed away
+
+          { addSchema && (
+            <JsonSongSchema
+              lyricist="Sebastjan Stadler"
+              ytId="UHkqbq1S1rs"
+              title="Footprints"
+              lyrics={
+                `Listening to the sounds of the pouring rain
+Hiding behind a smile, pretending all is fine
+But deep inside, away from prying eyes
+Is the lonely soul that cries every night
+
+I'll have to face my ghosts alone tonight
+Tomorrow's a bridge unknown... and another lie
+Memories of yesterday... and days gone by
+Remind me of what I've lost to time
+
+Clouds move on, yet sky remains grey
+Birds fly away, but I'm here to stay
+Day after day, as memory starts to fade
+Your footprints are slowly washed away
+
+When I close my eyes, you're back where you belong
+No one leaves, and I can stay all night long
+But when I wake up, I’ll never be the same
+And what matters is not just another game
+
+They say time heals, but that’s a lie
+I still hope i'll see you smile one more time
+as the sands of time keep slipping by
+Your footprints are slowly washed away
+
+Clouds move on, yet sky remains grey
+Birds fly away, but I'm here to stay
+Day after day... as memory starts to fade
+Your footprints are slowly washed away
+
+Clouds move on, yet sky remains grey
+Birds fly away, but I'm here to stay
+Day after day... as memory starts to fade
+Your footprints are slowly washed away
+
+Your footprints are slowly washed away
+` }
+            />
+          ) }
         </div>
       );
     }
@@ -601,6 +1030,58 @@ You live on` }
           We will dance again<br/>
           One day...<br/>
           We will dance again
+
+          { addSchema && (
+            <JsonSongSchema
+              lyricist="Sebastjan Stadler"
+              ytId="eIF3gkIxHw8"
+              title="We will dance again"
+              lyrics={
+                `You were a laughter in the pouring rain
+A star in the midnight sky
+Torn away when the day went dark
+the world’s been empty since
+
+Silent streets, but your song still plays
+You're still here in a thousand ways
+
+They stole your breath - but not your name
+The love we built still lives today
+Through the fire, storms and rain
+One day... we will dance again
+
+I hear you in the things they never say
+When voices fade, you’re the one that stays
+The world moved on like you were never here
+But I still think of you every day
+
+Nothing fills the space you left behind
+Just memories of days we lost to time
+Your name’s the only thing that's real
+you're the only reason I live
+
+Through the fire and rain
+we will dance again
+
+They stole your breath - but not your name
+The love we built still lives today
+I'll crawl through fire, blood and rain
+And one day... we will dance again
+
+They stole your breath - but not your name
+The love we built still lives today
+Through the fire, storms and rain
+One day... we will dance again
+We will dance again 
+
+Through the fire and rain
+One day... we will dance again
+
+We will dance again
+One day... 
+We will dance again` }
+            />
+          ) }
         </div>
       );
     }
@@ -656,6 +1137,60 @@ You live on` }
           Anyway...<br/>
           No one listens now anyway<br/>
           Anyway
+
+          { addSchema && (
+            <JsonSongSchema
+              lyricist="Sebastjan Stadler"
+              ytId="HWNMC2LyOAo"
+              title="Tears of silence"
+              lyrics={
+                `I woke up in a room away from home
+Faded pictures of times long gone
+Pieces of a world now out of reach
+Lost in silence... there's nothing left
+
+Face in the mirror - I don't know
+Time and silence took their toll
+Eyes of a stranger lost too long
+Torn-up wings in a place I don’t belong
+
+I don’t scream; I don’t pray
+No one listens now anyway
+Fading thoughts, growing pain
+Regrets of words I couldn’t say
+
+Tears of silence leave no trace
+Only Memories in faded frames
+No voices left to fill this space
+You're an echo in the pain that stays
+
+No one listens now anyway
+
+The clock keeps ticking, yet nothing moves
+Silent screams buried in their noise
+I walk through days that always feel the same
+Listening for the footsteps that never come
+
+I don’t scream, I don’t pray,
+No one listens now anyway
+Fading thoughts, growing pain.
+Regrets of words I couldn’t say
+
+Tears of silence leave no trace
+Only Memories in faded frames
+No voices left to fill this space
+You're an echo in the pain that stays
+
+The world I knew doesn't know me now
+just old photos in the faded frames
+I want to scream, I want to pray
+But no one listens now anyway
+
+Anyway...
+No one listens now anyway.
+Anyway` }
+            />
+          ) }
         </div>
       );
     }
@@ -713,6 +1248,62 @@ You live on` }
           With monsters in the shadows<br/>
           tomorrow<br/>
           tomorrow never comes
+
+          { addSchema && (
+            <JsonSongSchema
+              lyricist="Sebastjan Stadler"
+              ytId="lt9jImXrGX4"
+              title="Monsters in the shadows"
+              lyrics={
+                `Sitting in the dark alone, the walls are closing in
+Voices in my head are only whispers of the wind
+I'm lost in thoughts that never end
+With memories of moments time erased
+
+In the shadows, where the monsters play
+A flicker in the darkness whispers... calls my name
+The night twists the truth into a hollow lie
+Painting the world in dark shades of hell
+
+There's nothing left inside to break
+nothing left to feel
+Even pain gave up... it knows the deal
+
+No hope, no peace, just the sound of broken dreams
+Something wicked in shadows whispers... calls my name
+I don't sleep, I don't hope... I wait for the night to speak
+With monsters in the shadows... tomorrow never comes
+
+Tomorrow never comes
+
+I reach for the shadows, but they slip through my hands
+Like grains of time scattered across the sands
+The memories still echo in the silence you left
+And I still chase horizons that I'll never have
+
+I stopped looking for a way back home
+Stopped pretending I was ever whole
+I let the monster take me long ago
+Now there's nowhere left to go
+
+No hope, no peace, just the sound of broken dreams
+Something wicked in shadows whispers... calls my name
+I don't sleep, I don't hope... I wait for the night to speak
+With monsters in the shadows... tomorrow never comes
+
+Tomorrow never comes
+
+I stopped looking for a way back home
+Stopped pretending I was ever whole
+With monsters in the shadows... tomorrow never comes
+
+hmmm
+
+With monsters in the shadows
+tomorrow
+tomorrow never comes` }
+            />
+          ) }
         </div>
       );
     }
@@ -772,6 +1363,64 @@ You live on` }
           While the damned won&apos;t break the same old spells<br/>
           <br/>
           How many more have to die?
+
+          { addSchema && (
+            <JsonSongSchema
+              lyricist="Sebastjan Stadler"
+              ytId="rhhYGrMwcUg"
+              title="How many more? (Acoustic)"
+              lyrics={
+                `You draw lines on paper and in dirt
+You ignore where the story ends
+Another name, another face
+Another young life is lost
+
+You scream, you fight
+Blindfolded by the ancient spite
+No one wins in this parade
+Of dead men’s lies you wear with pride
+
+In prayer, you raise your hands
+Stained by the blood of the innocent
+
+Lay down your guns, your sacred lies
+There's no glory on the other side
+We've all bled, we've been burned
+What have you ever learned
+Tear the veil, count the dead
+Tell me how many more
+
+You were told they're not like you
+Fed fear like it was something true
+Behind the scars and shattered names
+There's a voice that hurts the same
+
+We bury children, not the lies
+While leaders watch with hollow eyes
+The trigger's quick, but the scars will last
+We bleed for the ghosts that died in the past
+
+You pray and you raise your hands
+stained by the blood of the innocent
+
+You pray with blood-stained hands
+and never stop to understand
+The dead don't care who drew first blood
+They paid the price.... for your holy lies
+
+Lay down your guns, your sacred lies
+There's no glory on the other side
+We've all bled, we've been burned
+What have you ever learned
+Tear the veil, count the dead
+tell me how many more
+
+How many more have to die
+While the damned won't break the same old spells
+
+How many more have to die?` }
+            />
+          ) }
         </div>
       );
     }
@@ -899,19 +1548,19 @@ while the world moved on`
     case 'tomorrow': {
       return (
         <div>
-          <strong>Whisper in the storm</strong>
+          <strong>Tomorrow</strong>
           <Authors/>
           <Copy/>
           Another sleepless night goes by<br/>
           The silence louder than my cries<br/>
           I&apos;m scared of thoughts inside my mind<br/>
-          I pray to make it through this night<br/>
-          <br/>
+          I pray to make it through this night<br/><br/>
+
           I pretend I know the things I feel<br/>
           I hope that time will help me heal<br/>
           Yet each day is just another lie<br/>
-          quiet screams i hold inside<br/>
-          <br/>
+          quiet screams i hold inside<br/><br/>
+
           If I’m not here tomorrow...<br/>
           Would the world still be the same<br/>
           If all I leave behind is hollow<br/>
@@ -919,26 +1568,26 @@ while the world moved on`
           Would the sun still rise tomorrow?<br/>
           Would you still say my name<br/>
           If I’m not here tomorrow<br/>
-          Would the world still be the same?<br/>
-          <br/>
+          Would the world still be the same?<br/><br/>
+
           Another sleepless night goes by<br/>
           I forgot what love is like<br/>
           There’s nothing left that feels like me<br/>
           I&apos;m a ghost of what I used to be<br/>
-          <br/>
+
           Scars many I&apos;ve learned to hide<br/>
           There&apos;s no will left to fight<br/>
           Old memories that never fade<br/>
-          Still haunt me to this day<br/>
-          <br/>
+          Still haunt me to this day<br/><br/>
+
           I’ve lived a life behind a wall<br/>
           There’s nothing left to say<br/>
           I’ve said enough - let silence speak<br/>
           Some things are better left that way<br/>
-          <br/>
+
           There&apos;s nothing left I need to say<br/>
-          No one&apos;s left to hear me now<br/>
-          <br/>
+          No one&apos;s left to hear me now<br/><br/>
+
           If I&apos;m not here tomorrow<br/>
           Would the world still be the same<br/>
           If all I leave behind is hollow<br/>
@@ -946,14 +1595,76 @@ while the world moved on`
           Would the sun still rise tomorrow<br/>
           Would you still say my name<br/>
           If I’m not here tomorrow<br/>
-          Would the world still be the same?<br/>
-          <br/>
+          Would the world still be the same?<br/><br/>
+
           If I&apos;m not here tomorrow<br/>
           Would the world still be the same?<br/>
-          Would the world still be the same?<br/>
-          <br/>
+          Would the world still be the same?<br/><br/>
+
           If I&apos;m not here tomorrow...<br/>
           Would you still say my name?
+
+          { addSchema && (
+            <JsonSongSchema
+              lyricist="Sebastjan Stadler"
+              ytId="jsJzwwZNfuk"
+              title="Tomorrow"
+              lyrics={
+                `Another sleepless night goes by
+The silence louder than my cries
+I'm scared of thoughts inside my mind
+I pray to make it through this night
+
+I pretend I know the things I feel
+I hope that time will help me heal
+Yet each day is just another lie
+quiet screams i hold inside
+
+If I’m not here tomorrow...
+Would the world still be the same
+If all I leave behind is hollow
+Just words that fade with time
+Would the sun still rise tomorrow? 
+Would you still say my name
+If I’m not here tomorrow
+Would the world still be the same? 
+
+Another sleepless night goes by
+I forgot what love is like
+There’s nothing left that feels like me
+I'm a ghost of what I used to be
+
+Scars many I've learned to hide
+There's no will left to fight
+Old memories that never fade
+Still haunt me to this day
+
+I’ve lived a life behind a wall
+There’s nothing left to say
+I’ve said enough - let silence speak,
+Some things are better left that way
+
+There's nothing left I need to say
+No one's left to hear me now
+
+If I'm not here tomorrow
+Would the world still be the same
+If all I leave behind is hollow
+Just words that fade with time
+Would the sun still rise tomorrow
+Would you still say my name
+If I’m not here tomorrow
+Would the world still be the same? 
+
+If I'm not here tomorrow
+Would the world still be the same?
+Would the world still be the same? 
+
+If I'm not here tomorrow...
+Would you still say my name?
+` }
+            />
+          ) }
         </div>
       );
     }
