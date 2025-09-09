@@ -12,7 +12,14 @@ $panel-background: #2b2b2b;
   border-left: 1px solid rgba(255 255 255 / 25%);
   height: max-content;
   min-height: 100vh;
-  z-index: 12;
+  z-index: 50;
+
+  border-left: 1px solid rgba(255 255 255 / 50%);
+  box-shadow: 40px 0 200px 50px rgba(240 72 122 / 50%);
+
+  @media (prefers-color-scheme: dark) {
+    box-shadow: 40px 0 200px 50px rgba(240 72 122 / 50%);
+  }
 
   & {
     @media (prefers-color-scheme: dark) {
@@ -39,7 +46,7 @@ $panel-background: #2b2b2b;
     right: 0;
     background-color: rgba(0 0 0 / 0%);
     cursor: unset !important;
-    z-index: 11;
+    z-index: 49;
     border: 0;
 
     & {
@@ -55,7 +62,7 @@ $panel-background: #2b2b2b;
     bottom: 0;
     right: -100%;
     overflow-y: scroll;
-    z-index: 10;
+    z-index: 50;
     transition: right 0.5s ease-in-out, width 0.25s ease-in-out;
     width: 100%;
 
@@ -84,7 +91,7 @@ $panel-background: #2b2b2b;
     height: 30px;
     align-items: center;
     justify-content: center;
-    z-index: 20;
+    z-index: 60;
   }
 
   &__text {
