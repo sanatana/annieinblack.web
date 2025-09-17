@@ -123,9 +123,16 @@
         background-color: variables.$brand-color;
         font-size: 1.3rem;
 
+        & {
+          @media (prefers-color-scheme: dark) {
+            background-color: variables.$brand-color;
+          }
+        }
         &:hover {
           color: #fff;
         }
+
+
       }
 
       & {
@@ -153,6 +160,10 @@
         padding-bottom: 4px;
         border-bottom: 1px solid variables.$brand-color;
         font-size: 1.8rem;
+
+        @media (prefers-color-scheme: dark) {
+          background-color: variables.$brand-color;
+        }
       }
     }
   }

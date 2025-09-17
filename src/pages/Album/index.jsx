@@ -29,7 +29,9 @@ const Empty = () => (
 const PageTitle = () => {
 
   useEffect(() => {
-    setPageTitle('Album: Hollow', 'What inspires us and how we create our music', '/our-music/hollow');
+    setPageTitle('Album Hollow by Annie in Black',
+      'What inspires us and how we create our music',
+      '/our-music/hollow');
   }, []);
 
   return null;
@@ -39,11 +41,27 @@ const PageHeaderText = () => {
 
   const { show, data } = useSelector((state) => state.song);
 
+  useEffect(() => {
+    if (data?.title && data?.slug) {
+      setPageTitle(`${data.title} by Annie in Black`,
+        `Lyrics for a song ${data.title} by Annie in Black`,
+        `/our-music/hollow/${data.slug}`,
+      );
+      return;
+    }
+
+    setPageTitle(
+      'Album Hollow by Annie in Black',
+      'What inspires us and how we create our music',
+      '/our-music/hollow'
+    );
+  }, [show, data]);
+
   if (data?.title && show) {
     return (
       <>
-        <h1 className="h1__title">Our songs - { data.title }</h1>
-        <h2>Song by Annie in Black</h2>
+        <h1 className="h1__title">{ data.title }</h1>
+        <h2>{ data.title } Lyrics by Annie in Black</h2>
       </>);
   }
 

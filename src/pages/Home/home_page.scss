@@ -176,6 +176,10 @@
       padding: 1rem;
       font-size: 1.4rem;
       margin-top: 1.4rem;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: variables.$brand-color;
+      }
     }
   }
 
@@ -245,6 +249,10 @@
         text-decoration: none;
         background-color: variables.$brand-color;
         box-shadow: 0 0 35px rgba(255 255 255 / 50%);
+
+        @media (prefers-color-scheme: dark) {
+          background-color: variables.$brand-color;
+        }
       }
     }
 
@@ -334,7 +342,3 @@
   }
 }
 
-
-.song-lyrics {
-
-}

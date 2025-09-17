@@ -174,7 +174,7 @@ const Videos = () => {
 
   return (
     <section className="new-release__video">
-      <h2>Videos</h2>
+      <h2>Music videos</h2>
       <p className="new-release__video-description">
         “<strong>I Remember</strong>” is the opening track from Hollow.
         This song and video are a tribute to friends and loved ones we’ve lost — a token of appreciation and remembrance

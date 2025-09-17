@@ -38,8 +38,8 @@ const Goddess = () => {
       A lovely flower never truly dies.
 
       <div className="dedication dedication-bottom">
-        To Vesna — my first love and my first kiss. You left us too soon... but you’ll always live in my heart, in my
-        memories, in my poems and songs, and finally in my dreams where I still whisper the words that remain unsaid.
+        To Vesna — my first love, my first kiss. You left us too soon... but you’ll always live in my heart, in my
+        memories, in my poems and songs... and in my dreams where I still whisper the words that remain unsaid.
 
         <small>
           ** Vesna is the Slavic goddess of spring, youth, fertility,

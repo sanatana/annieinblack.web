@@ -41,6 +41,7 @@ const Video = () => {
 
   return (
     <video
+      role="presentation"
       ref={ videoRef }
       loop muted autoPlay playsInline poster="/assets/images/hero__001.jpg"
       className="hero-video">
